@@ -3,8 +3,8 @@ import Page from '../components/Page'
 import Layout from "../components/layout"
 import { graphql } from 'gatsby'
 import StoryblokService from '../utils/storyblok-service'
- 
-export default class extends React.Component {
+
+class Home extends React.Component {
   state = {
     story: {
        content: this.props.data.story ? JSON.parse(this.props.data.story.content) : {}
@@ -31,10 +31,10 @@ export default class extends React.Component {
     )
   }
 }
- 
+
 export const query = graphql`
-  {
-    story: storyblokEntry(full_slug: { eq: "home" }) {
+  query HomePage($nodeId: String) {
+    story: storyblokEntry(id: { eq: $nodeId }) {
       name
       content
       full_slug
@@ -42,3 +42,5 @@ export const query = graphql`
     }
   }
 `
+
+export default Home

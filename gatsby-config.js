@@ -32,5 +32,14 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+
+    {
+      resolve: 'gatsby-source-storyblok',
+      options: {
+        accessToken: '5AZs9QX9i0RlMv7e0KGSUQtt',
+        homeSlug: 'home',
+        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
+      }
+    },
   ],
 }

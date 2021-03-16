@@ -8,6 +8,8 @@
 import * as React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import StoryblokService from "../utils/storyblok-service"
 
 import Header from "./header"
 import "./layout.css"
@@ -25,6 +27,22 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <Helmet
+        script={[
+          {
+            src: `//app.storyblok.com/f/storyblok-latest.js?t=${StoryblokService.token}`,
+            type: "text/javascript",
+          },
+        ]}
+      />
+      <Helmet
+        script={[
+          {
+            innerHTML: `var StoryblokCacheVersion = '${StoryblokService.getCacheVersion()}';`,
+            type: "text/javascript",
+          },
+        ]}
+      />
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
