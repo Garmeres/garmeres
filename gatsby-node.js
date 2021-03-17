@@ -21,8 +21,8 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-    }
-  `)
+    }`)
+
 
   const homeComponent = path.resolve(`./src/templates/home.js`)
   result.data.stories.edges.forEach(({ node }) => {
