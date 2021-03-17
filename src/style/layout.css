@@ -1,0 +1,19 @@
+* {
+  font-family: Calibri;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;
+}
+
+header h1 {
+  margin-left: 10%;
+}
+
+header h1 a {
+  color: white;
+  text-decoration: none;
+}
