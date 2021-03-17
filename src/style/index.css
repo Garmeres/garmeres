@@ -1,0 +1,54 @@
+
+main {
+  width: 50%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  bottom: 0;
+}
+
+#logo-container {
+  width: 100%;
+}
+
+.logo-image {
+  border-radius: 8px;
+}
+
+#logo-text {
+  font-family: Calibri;
+  margin: 0 auto;
+  text-align: center;
+  margin: 20px 0;
+}
+
+#language-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 100%;
+  flex-flow: row wrap;
+}
+
+#language-selector a {
+  padding: 10px;
+  margin: auto;
+  color: black;
+  text-decoration: none;
+  width: 150px;
+  height: auto;
+  min-width: 150px;
+  text-align: center;
+  font-family: Calibri;
+  font-size: 16pt;
+}
+
+#language-selector a:hover {
+  text-decoration: underline;
+}

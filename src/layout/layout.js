@@ -11,8 +11,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Helmet } from "react-helmet"
 import StoryblokService from "../utils/storyblok-service"
 
-import Header from "./header"
-import "./layout.css"
+import Header from "../components/header"
+import "../style/layout.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`

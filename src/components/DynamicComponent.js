@@ -3,13 +3,15 @@ import Teaser from "./Teaser"
 import Feature from "./Feature"
 import Grid from "./Grid"
 import Placeholder from "./Placeholder"
-import FluidImage from "./FluidImage"
+import LogoImage from "./image-components/LogoImage"
+import LanguageSelector from "./index/LanguageSelector"
 
 const Components = {
   teaser: Teaser,
   feature: Feature,
   grid: Grid,
-  logo_image: FluidImage,
+  logo_image: LogoImage,
+  language_selector: LanguageSelector,
 }
 
 const Component = ({ blok }) => {

@@ -18,16 +18,17 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             id
             full_slug
+            lang
           }
         }
       }
-    }`)
-
+    }
+  `)
 
   const homeComponent = path.resolve(`./src/templates/home.js`)
   result.data.stories.edges.forEach(({ node }) => {
     createPage({
-      path: node.full_slug,
+      path: node.lang != "default" ? node.lang : "en",
       component: homeComponent,
       context: {
         nodeId: node.id,
