@@ -19,6 +19,7 @@ exports.createPages = async ({ graphql, actions }) => {
             id
             full_slug
             lang
+            uuid
           }
         }
       }
@@ -32,6 +33,15 @@ exports.createPages = async ({ graphql, actions }) => {
       component: homeComponent,
       context: {
         nodeId: node.id,
+        uuid: node.uuid,
+      },
+    })
+    createPage({
+      path: node.lang == "default" ? "en" : node.lang,
+      component: homeComponent,
+      context: {
+        nodeId: node.id,
+        uuid: node.uuid,
       },
     })
   })

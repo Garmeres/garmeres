@@ -3,10 +3,10 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import StoryblokService from "../utils/storyblok-service"
 
-import Header from "../components/header"
+import Header from "../components/header/header"
 import "../style/layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, siblings, lang }) => {
   return (
     <>
       <Helmet
@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
           },
         ]}
       />
-      <Header siteTitle="Garmeres" />
+      <Header siteTitle="GARMERES" siblings={siblings} lang={lang} />
       <main>{children}</main>
       <footer></footer>
     </>
