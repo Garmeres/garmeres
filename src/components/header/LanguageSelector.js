@@ -22,19 +22,22 @@ export default ({ siblings, lang }) => {
       render={data => {
         return (
           <div id="header-language-selector">
-            {siblings.edges.map(({ node }) => {
-              return (
-                <Link
-                  key={node.lang}
-                  to={`/${node.full_slug}`}
-                  style={{
-                    textDecoration: node.lang == lang ? "underline" : "none",
-                  }}
-                >
-                  {node.lang == "default" ? "en" : node.lang}
-                </Link>
-              )
-            })}
+            {siblings == null
+              ? null
+              : siblings.edges.map(({ node }) => {
+                  return (
+                    <Link
+                      key={node.lang}
+                      to={`/${node.full_slug}`}
+                      style={{
+                        textDecoration:
+                          node.lang == lang ? "underline" : "none",
+                      }}
+                    >
+                      {node.lang == "default" ? "en" : node.lang}
+                    </Link>
+                  )
+                })}
           </div>
         )
       }}

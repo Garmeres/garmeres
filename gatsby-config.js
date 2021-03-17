@@ -34,12 +34,12 @@ module.exports = {
     // `gatsby-plugin-offline`,
 
     {
-      resolve: 'gatsby-source-storyblok',
+      resolve: "gatsby-source-storyblok",
       options: {
-        accessToken: '5AZs9QX9i0RlMv7e0KGSUQtt',
-        homeSlug: 'home',
-        version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'
-      }
+        accessToken: "cqYfQpnpPi9yS2MBQADiQQtt",
+        homeSlug: "home",
+        version: process.env.NODE_ENV === "production" ? "published" : "draft",
+      },
     },
   ],
 }
