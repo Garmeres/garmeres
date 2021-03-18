@@ -4,7 +4,7 @@ import Layout from "../layout/layout"
 import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
 
-class Home extends React.Component {
+class PageTemplate extends React.Component {
   state = {
     story: {
       content: this.props.data.story
@@ -43,7 +43,7 @@ class Home extends React.Component {
 }
 
 export const query = graphql`
-  query HomePage($nodeId: String, $uuid: String) {
+  query Page($nodeId: String, $uuid: String) {
     story: storyblokEntry(id: { eq: $nodeId }) {
       name
       content
@@ -65,4 +65,4 @@ export const query = graphql`
   }
 `
 
-export default Home
+export default PageTemplate

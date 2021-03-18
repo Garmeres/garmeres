@@ -13,7 +13,17 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     query mainQuery {
-      stories: allStoryblokEntry(filter: { name: { eq: "Home" } }) {
+      stories: allStoryblokEntry(filter: { field_component: { eq: "page" } }) {
+        edges {
+          node {
+            id
+            full_slug
+            lang
+            uuid
+          }
+        }
+      }
+      homePages: allStoryblokEntry(filter: { name: { eq: "Home" } }) {
         edges {
           node {
             id
@@ -26,19 +36,25 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const homeComponent = path.resolve(`./src/templates/home.js`)
-  result.data.stories.edges.forEach(({ node }) => {
-    createPage({
-      path: node.full_slug,
-      component: homeComponent,
-      context: {
-        nodeId: node.id,
-        uuid: node.uuid,
-      },
+  const pageTemplate = path.resolve(`./src/templates/page-template.js`)
+
+  result.data.stories.edges
+    .filter(({ node }) => node.full_slug !== "/")
+    .map(({ node }) => {
+      createPage({
+        path: node.full_slug,
+        component: pageTemplate,
+        context: {
+          nodeId: node.id,
+          uuid: node.uuid,
+        },
+      })
     })
+
+  result.data.homePages.edges.map(({ node }) => {
     createPage({
-      path: node.lang == "default" ? "en" : node.lang,
-      component: homeComponent,
+      path: node.lang != "default" ? node.lang : "en",
+      component: pageTemplate,
       context: {
         nodeId: node.id,
         uuid: node.uuid,

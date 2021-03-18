@@ -1,0 +1,7 @@
+.rich-text {
+  width: 100%;
+}
+
+.rich-text .gatsby-image-wrapper {
+  max-width: 100%;
+}
