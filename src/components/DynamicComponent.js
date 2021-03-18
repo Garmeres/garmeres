@@ -1,7 +1,5 @@
 import React from "react"
 import Teaser from "./Teaser"
-import Feature from "./Feature"
-import Grid from "./Grid"
 import Placeholder from "./Placeholder"
 import LogoImage from "./image-components/LogoImage"
 import LanguageSelector from "./index/LanguageSelector"
@@ -9,8 +7,6 @@ import RichText from "./RichText"
 
 const Components = {
   teaser: Teaser,
-  feature: Feature,
-  grid: Grid,
   logo_image: LogoImage,
   language_selector: LanguageSelector,
   rich_text: RichText,

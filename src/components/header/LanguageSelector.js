@@ -20,24 +20,33 @@ export default ({ siblings, lang }) => {
     <StaticQuery
       query={query}
       render={data => {
+        const nodes = data.settings.edges.map(({ node }) => {
+          return {
+            id: node.id,
+            lang: node.lang,
+            language_label: JSON.parse(node.content).language_label,
+            full_slug:
+              siblings != null
+                ? siblings.edges.find(other => other.node.lang == node.lang)
+                    .full_slug
+                : `/${node.lang != "default" ? node.lang : "en"}`,
+          }
+        })
         return (
           <div id="header-language-selector">
-            {siblings == null
-              ? null
-              : siblings.edges.map(({ node }) => {
-                  return (
-                    <Link
-                      key={node.lang}
-                      to={`/${node.full_slug}`}
-                      style={{
-                        textDecoration:
-                          node.lang == lang ? "underline" : "none",
-                      }}
-                    >
-                      {node.lang == "default" ? "en" : node.lang}
-                    </Link>
-                  )
-                })}
+            {nodes.map(node => {
+              return (
+                <Link
+                  key={node.lang}
+                  to={`/${node.full_slug}`}
+                  style={{
+                    textDecoration: node.lang == lang ? "underline" : "none",
+                  }}
+                >
+                  {node.lang == "default" ? "en" : node.lang}
+                </Link>
+              )
+            })}
           </div>
         )
       }}
