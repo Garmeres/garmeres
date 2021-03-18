@@ -45,4 +45,10 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  return new Promise((resolve, reject) => {
+        createPage({
+          path: `/editor`,
+          component: path.resolve('src/pages/editor.js')
+        })
 }
