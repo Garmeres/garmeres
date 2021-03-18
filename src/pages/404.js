@@ -1,14 +1,31 @@
-import * as React from "react"
+import React from "react"
+import Page from "../components/Page"
+import Layout from "../layout/Layout"
+import StoryblokService from "../utils/storyblok-service"
 
-import Layout from "../layout/layout"
-import SEO from "../components/seo"
+export default class extends React.Component {
+  state = {
+    story: {},
+  }
 
-const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>404: Not Found</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
-)
+  async getInitialStory() {
+    const { pathname } = this.props.location
+    let {
+      data: { story },
+    } = await StoryblokService.get(`cdn/stories/${pathname}`)
+    return story
+  }
 
-export default NotFoundPage
+  async componentDidMount() {
+    let story = await this.getInitialStory()
+    if (story.content) this.setState({ story })
+    setTimeout(() => StoryblokService.initEditor(this), 200)
+  }
+
+  render() {
+    let content = <h1>Not found</h1>
+    if (this.state.story.content)
+      content = <Page blok={this.state.story.content} />
+    return <Layout location={this.props.location} lang={this.state.story.lang}>{content}</Layout>
+  }
+}

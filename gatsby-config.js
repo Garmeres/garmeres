@@ -38,7 +38,7 @@ module.exports = {
       options: {
         accessToken: "cqYfQpnpPi9yS2MBQADiQQtt",
         homeSlug: "home",
-        version: process.env.NODE_ENV === "production" ? "published" : "draft",
+        version: "published", //process.env.NODE_ENV === "production" ? "published" : "draft",
       },
     },
   ],
