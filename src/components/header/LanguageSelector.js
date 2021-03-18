@@ -26,9 +26,11 @@ export default ({ siblings, lang }) => {
             lang: node.lang,
             language_label: JSON.parse(node.content).language_label,
             full_slug:
-              siblings != null
-                ? siblings.edges.find(other => other.node.lang == node.lang)
-                    .full_slug
+              siblings != null && siblings.edges.length > 0
+                ? `/${
+                    siblings.edges.find(other => other.node.lang == node.lang)
+                      .node.full_slug
+                  }`
                 : `/${node.lang != "default" ? node.lang : "en"}`,
           }
         })
@@ -38,7 +40,7 @@ export default ({ siblings, lang }) => {
               return (
                 <Link
                   key={node.lang}
-                  to={`/${node.full_slug}`}
+                  to={`${node.full_slug}`}
                   style={{
                     textDecoration: node.lang == lang ? "underline" : "none",
                   }}

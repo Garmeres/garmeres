@@ -31,7 +31,7 @@ export default class extends React.Component {
 
   render() {
     return (
-      <Layout location={this.props.location} lang={this.props.data.story.lang}>
+      <Layout location={this.props.location}>
         <Page blok={this.state.story.content} />
       </Layout>
     )
