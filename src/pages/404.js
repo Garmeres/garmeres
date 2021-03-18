@@ -1,6 +1,6 @@
 import React from "react"
 import Page from "../components/Page"
-import Layout from "../layout/Layout"
+import Layout from "../layout/layout"
 import StoryblokService from "../utils/storyblok-service"
 
 export default class extends React.Component {
@@ -26,6 +26,10 @@ export default class extends React.Component {
     let content = <h1>Not found</h1>
     if (this.state.story.content)
       content = <Page blok={this.state.story.content} />
-    return <Layout location={this.props.location} lang={this.state.story.lang}>{content}</Layout>
+    return (
+      <Layout location={this.props.location} lang={this.state.story.lang}>
+        {content}
+      </Layout>
+    )
   }
 }
