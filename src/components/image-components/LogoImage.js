@@ -5,7 +5,7 @@ import { getFluidGatsbyImage } from "gatsby-storyblok-image"
 
 const FluidImage = ({ blok }) => {
   const image = getFluidGatsbyImage(blok.image.filename, {
-    maxWidth: 900,
+    maxWidth: 380,
   })
 
   return (
@@ -14,7 +14,7 @@ const FluidImage = ({ blok }) => {
         {image != null ? (
           <Img className="logo-image" fluid={image} alt={blok.alt} />
         ) : null}
-        <h1 id="logo-text">GARMERES</h1>
+        <h1 id="logo-text">Garmeres</h1>
       </div>
     </SbEditable>
   )
