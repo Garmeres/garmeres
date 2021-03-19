@@ -5,10 +5,11 @@ import StoryblokService from "../utils/storyblok-service"
 
 import Header from "../components/header/header"
 import "../style/layout.css"
+import Sidebar from "../components/layout/sidebar"
 
 const Layout = ({ children, siblings, lang }) => {
   return (
-    <>
+    <div id="page-container">
       <Helmet
         script={[
           {
@@ -25,9 +26,10 @@ const Layout = ({ children, siblings, lang }) => {
           },
         ]}
       />
+      <Sidebar lang={lang} />
       <main>{children}</main>
       <footer></footer>
-    </>
+    </div>
   )
 }
 
