@@ -26,7 +26,7 @@ const Layout = ({ children, siblings, lang }) => {
           },
         ]}
       />
-      <Sidebar lang={lang} />
+      <Sidebar siblings={siblings} lang={lang} />
       <main>{children}</main>
       <footer></footer>
     </div>

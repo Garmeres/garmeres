@@ -7,6 +7,13 @@
   height: 100%;
 }
 
+#sidebar-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
 .sidebar-logo-container {
   display: flex;
   flex-direction: row;
@@ -75,4 +82,18 @@
   to {
     background-color: #222;
   }
+}
+
+#sidebar-language-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+#sidebar-language-menu a {
+  color: white;
+  text-decoration: none;
+  margin: 10px;
 }

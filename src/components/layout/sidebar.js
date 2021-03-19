@@ -3,6 +3,7 @@ import { graphql, Link, StaticQuery } from "gatsby"
 import "../../style/sidebar.css"
 import { getFluidGatsbyImage } from "gatsby-storyblok-image"
 import Img from "gatsby-image"
+import LanguageMenu from "./language-menu"
 
 const query = graphql`
   query SidebarQuery {
@@ -54,17 +55,22 @@ const Sidebar = ({ siblings, lang }) => {
         return (
           <div id="sidebar-container">
             <Logo filename={content.logo.filename} text={content.logo_text} />
-            {menuData.menuItems.map(item => {
-              return (
-                <Link
-                  className="sidebar-menu-item"
-                  to={`/${item.full_slug}`}
-                  key={item.full_slug}
-                >
-                  {item.name}
-                </Link>
-              )
-            })}
+            <div id="sidebar-content-container">
+              <div id="sidebar-menu-items-container">
+                {menuData.menuItems.map(item => {
+                  return (
+                    <Link
+                      className="sidebar-menu-item"
+                      to={`/${item.full_slug}`}
+                      key={item.full_slug}
+                    >
+                      {item.name}
+                    </Link>
+                  )
+                })}
+              </div>
+              <LanguageMenu siblings={siblings} lang={lang} />
+            </div>
           </div>
         )
       }}
