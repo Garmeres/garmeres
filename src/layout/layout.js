@@ -25,7 +25,6 @@ const Layout = ({ children, siblings, lang }) => {
           },
         ]}
       />
-      <Header siteTitle="GARMERES" siblings={siblings} lang={lang} />
       <main>{children}</main>
       <footer></footer>
     </>
