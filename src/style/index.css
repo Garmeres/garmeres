@@ -5,20 +5,25 @@ footer {
   bottom: 0;
 }
 
+main {
+  justify-content: center;
+}
+
 #logo-container {
   width: 100%;
 }
 
 .logo-image {
-  border-radius: 10px;
+  border-radius: 20px;
   max-width: 380px;
   margin: 0 auto;
+  margin-bottom: 80px;
 }
 
 #logo-text {
   font-family: "Spartan";
   font-size: 40pt;
-  margin: 30px auto;
+  margin: 40px auto;
   text-align: center;
 }
 
@@ -27,19 +32,19 @@ footer {
   flex-direction: row;
   padding: 10px 0;
   width: 100%;
-  flex-flow: row wrap;
+  justify-content: center;
 }
 
 #language-selector a {
-  padding: 10px;
-  margin: 10px auto;
+  padding: 15px 5px;
+  margin: 5px 15px;
   color: black;
   text-decoration: none;
   width: 180px;
   height: auto;
-  min-width: 150px;
+  min-width: 240px;
   text-align: center;
-  font-size: 16pt;
+  font-size: 18pt;
 }
 
 #language-selector a:hover {
@@ -47,16 +52,38 @@ footer {
 }
 
 @media only screen and (max-width: 1280px) {
+  #logo-text {
+    margin: 20px auto;
+    font-size: 36pt;
+  }
   .logo-image {
-    max-width: 340px;
+    max-width: 300px;
+    margin-bottom: 40px;
   }
   #language-selector {
     flex-direction: column;
+  }
+  #language-selector a {
+    margin: 15px auto;
+    padding: 5px;
+    font-size: 18pt;
   }
 }
 
 @media only screen and (max-width: 720px) {
   .logo-image {
-    max-width: 280px;
+    max-width: 240px;
+  }
+  #logo-text {
+    margin: 20px auto;
+    font-size: 32pt;
+  }
+  #language-selector {
+    flex-direction: column;
+  }
+  #language-selector a {
+    margin: 15px auto;
+    padding: 5px;
+    font-size: 16pt;
   }
 }

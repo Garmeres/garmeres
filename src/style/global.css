@@ -5,10 +5,27 @@
   font-family: "Spartan", "Roboto", sans-serif;
 }
 
+#gatsby-focus-wrapper {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+#page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
 main {
+  display: flex;
+  flex-direction: column;
   width: 50%;
   margin: auto;
-  padding: 50px 0;
+  flex-grow: 1;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -24,20 +41,6 @@ main {
 }
 
 body {
-  margin: 0;
-  padding: 0;
-}
-
-#gatsby-focus-wrapper {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-
-#page-container {
-  height: 100%;
-  width: 100%;
   margin: 0;
   padding: 0;
 }
