@@ -46,7 +46,7 @@ export const query = graphql`
       full_slug
       uuid
     }
-    settings: allStoryblokEntry(filter: { name: { eq: "Settings" } }) {
+    settings: allStoryblokEntry(filter: { name: { eq: "Language label" } }) {
       edges {
         node {
           id

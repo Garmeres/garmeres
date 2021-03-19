@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from "gatsby"
 
 const query = graphql`
   query headerLangSelector {
-    settings: allStoryblokEntry(filter: { name: { eq: "Settings" } }) {
+    settings: allStoryblokEntry(filter: { name: { eq: "Language label" } }) {
       edges {
         node {
           id

@@ -4,7 +4,7 @@ import { StaticQuery, graphql, Link } from "gatsby"
 
 const query = graphql`
   query LanguageQuery {
-    settings: allStoryblokEntry(filter: { name: { eq: "Settings" } }) {
+    settings: allStoryblokEntry(filter: { name: { eq: "Language label" } }) {
       edges {
         node {
           id
@@ -23,11 +23,6 @@ const query = graphql`
     }
   }
 `
-
-const LangOption = ({ node }) => {
-  const content = JSON.parse(node.content)
-  return <Link to=""></Link>
-}
 
 const Selector = ({ blok }) => {
   return (
