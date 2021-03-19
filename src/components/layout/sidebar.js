@@ -56,7 +56,11 @@ const Sidebar = ({ siblings, lang }) => {
             <Logo filename={content.logo.filename} text={content.logo_text} />
             {menuData.menuItems.map(item => {
               return (
-                <Link to={`/${item.full_slug}`} key={item.full_slug}>
+                <Link
+                  className="sidebar-menu-item"
+                  to={`/${item.full_slug}`}
+                  key={item.full_slug}
+                >
                   {item.name}
                 </Link>
               )

@@ -44,3 +44,35 @@
   margin: auto;
   margin-left: 20px;
 }
+
+.sidebar-menu-item {
+  display: flex;
+  padding: 20px 20px;
+  color: white;
+  text-decoration: none;
+  animation-name: menu-item-fade-out;
+  animation-duration: 0.3s;
+}
+
+.sidebar-menu-item:hover {
+  background-color: #444;
+  animation-name: menu-item-fade-in;
+  animation-duration: 0.3s;
+}
+
+@keyframes menu-item-fade-in {
+  from {
+    background-color: #222;
+  }
+  to {
+    background-color: #444;
+  }
+}
+@keyframes menu-item-fade-out {
+  from {
+    background-color: #444;
+  }
+  to {
+    background-color: #222;
+  }
+}
