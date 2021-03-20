@@ -30,6 +30,7 @@ const LanguageMenu = ({ siblings, lang }) => {
               ).node.full_slug
               return (
                 <Link
+                  key={node.lang}
                   to={`/${full_slug}`}
                   style={{
                     textDecoration: nodeLang === lang ? "underline" : "none",
