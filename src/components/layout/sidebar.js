@@ -4,6 +4,7 @@ import "../../style/sidebar.css"
 import { getFluidGatsbyImage } from "gatsby-storyblok-image"
 import Img from "gatsby-image"
 import LanguageMenu from "./language-menu"
+import Social from "./social"
 
 const query = graphql`
   query SidebarQuery {
@@ -26,10 +27,7 @@ const query = graphql`
   }
 `
 
-const Logo = ({ filename, text }) => {
-  const image = getFluidGatsbyImage(filename, {
-    maxWidth: 180,
-  })
+const Logo = ({ image, text }) => {
   return (
     <div className="sidebar-logo-container">
       <Link to="/">
@@ -43,23 +41,34 @@ const Logo = ({ filename, text }) => {
 }
 
 const BurgerButton = ({ onClick }) => {
-  return <div></div>
-}
-
-const MobileHeader = ({ content, menuData, lang, siblings }) => {
-  const [visibility, setVisibility] = useState("hidden")
-
   return (
-    <div id="mobile-header-container">
-      <BurgerButton onClick={() => {}} />
+    <div className="burger-button-container" onClick={onClick} role="button">
+      <div className="burger-button-bar" />
+      <div className="burger-button-bar" />
+      <div className="burger-button-bar" />
+      <div className="burger-button-bar" />
     </div>
   )
 }
 
-const DesktopSidebar = ({ content, menuData, lang, siblings }) => {
+const MobileHeader = ({ content, menuData, lang, siblings, logoImage }) => {
+  const [visibility, setVisibility] = useState("hidden")
+
+  return (
+    <div id="mobile-header-container">
+      <Logo image={logoImage} text={content.logo_text} />
+      <Social lang={lang} />
+      <div id="mobile-header-left">
+        <BurgerButton onClick={() => {}} />
+      </div>
+    </div>
+  )
+}
+
+const DesktopSidebar = ({ content, menuData, lang, siblings, logoImage }) => {
   return (
     <div id="sidebar-container">
-      <Logo filename={content.logo.filename} text={content.logo_text} />
+      <Logo image={logoImage} text={content.logo_text} />
       <div id="sidebar-content-container">
         <div id="sidebar-menu-items-container">
           {menuData.menuItems.map(item => {
@@ -74,7 +83,10 @@ const DesktopSidebar = ({ content, menuData, lang, siblings }) => {
             )
           })}
         </div>
-        <LanguageMenu siblings={siblings} lang={lang} />
+        <div id="sidebar-menu-footer">
+          <Social lang={lang} />
+          <LanguageMenu siblings={siblings} lang={lang} />
+        </div>
       </div>
     </div>
   )
@@ -89,6 +101,9 @@ const Sidebar = ({ siblings, lang }) => {
           return node.lang === lang
         }).node
         const content = JSON.parse(data.storyblokEntry.content)
+        const logoImage = getFluidGatsbyImage(content.logo.filename, {
+          maxWidth: 180,
+        })
 
         return (
           <div id="header-container">
@@ -97,12 +112,14 @@ const Sidebar = ({ siblings, lang }) => {
               menuData={menuData}
               lang={lang}
               siblings={siblings}
+              logoImage={logoImage}
             />
             <MobileHeader
               content={content}
               menuData={menuData}
               lang={lang}
               siblings={siblings}
+              logoImage={logoImage}
             />
           </div>
         )

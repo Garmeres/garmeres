@@ -1,7 +1,11 @@
 :root {
-  --mobile-header-height: 80px;
+  --mobile-header-height: 90px;
+  --mobile-header-height-small: 60px;
   --sidebar-width: 20%;
   --logo-size: 70px;
+  --mobile-logo-size: 60px;
+  --burger-button-height: 35px;
+  --burger-button-width: 40px;
 }
 
 #header-container {
@@ -118,10 +122,50 @@
 #mobile-header-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   flex-grow: 1;
   visibility: hidden;
   height: 0;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: #333;
+  padding: 0 20px;
+}
+
+#mobile-header-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.mobile-logo-container {
+  display: flex;
+  height: var(--mobile-logo-size);
+  width: var(--mobile-logo-size);
+  margin: auto 0;
+  padding: 0;
+}
+
+.mobile-logo-image {
+  height: var(--mobile-logo-size);
+  width: var(--mobile-logo-size);
+  border-radius: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+.burger-button-container {
+  width: var(--burger-button-width);
+  height: var(--burger-button-height);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto 20px;
+  cursor: pointer;
+}
+
+.burger-button-bar {
+  background-color: white;
+  width: 100%;
+  height: 4px;
+  border-radius: 1px;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -129,8 +173,6 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    margin: 0;
-    padding: 0;
     height: var(--mobile-header-height);
     box-sizing: border-box;
   }
@@ -145,8 +187,44 @@
   #mobile-header-container {
     visibility: visible;
     height: var(--mobile-header-height);
+  }
+
+  .sidebar-logo-container {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0);
     margin: 0;
     padding: 0;
+  }
+
+  .sidebar-logo-container a {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: auto 0;
+    font-size: 18pt;
+    color: white;
+    text-decoration: none;
+  }
+
+  #sidebar-logo-image-container {
+    width: var(--logo-size);
+    height: var(--logo-size);
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-logo-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+
+  #sidebar-logo-text {
+    margin: auto;
+    margin-left: 20px;
   }
 }
 

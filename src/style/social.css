@@ -1,0 +1,21 @@
+#social-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#social-container a {
+  margin: 20px 10px;
+  color: #eee;
+  height: 25px;
+}
+
+@media only screen and (max-width: 1280px) {
+  #social-container {
+    margin: auto 10px;
+    margin-left: 30px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+}
