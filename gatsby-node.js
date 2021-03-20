@@ -39,7 +39,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const pageTemplate = path.resolve(`./src/templates/page-template.js`)
 
   result.data.stories.edges
-    .filter(({ node }) => node.full_slug !== "/")
+    .filter(({ node }) => node.full_slug !== "/" && node.full_slug != "index")
     .map(({ node }) => {
       createPage({
         path: node.full_slug,
