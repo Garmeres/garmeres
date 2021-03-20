@@ -5,8 +5,10 @@ footer {
   bottom: 0;
 }
 
-main {
+#index-main {
   justify-content: center;
+  height: auto;
+  margin: auto;
 }
 
 #logo-container {

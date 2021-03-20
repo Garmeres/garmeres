@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, Link, StaticQuery } from "gatsby"
 import "../../style/sidebar.css"
 import { getFluidGatsbyImage } from "gatsby-storyblok-image"
@@ -42,6 +42,44 @@ const Logo = ({ filename, text }) => {
   )
 }
 
+const BurgerButton = ({ onClick }) => {
+  return <div></div>
+}
+
+const MobileHeader = ({ content, menuData, lang, siblings }) => {
+  const [visibility, setVisibility] = useState("hidden")
+
+  return (
+    <div id="mobile-header-container">
+      <BurgerButton onClick={() => {}} />
+    </div>
+  )
+}
+
+const DesktopSidebar = ({ content, menuData, lang, siblings }) => {
+  return (
+    <div id="sidebar-container">
+      <Logo filename={content.logo.filename} text={content.logo_text} />
+      <div id="sidebar-content-container">
+        <div id="sidebar-menu-items-container">
+          {menuData.menuItems.map(item => {
+            return (
+              <Link
+                className="sidebar-menu-item"
+                to={`/${item.full_slug}`}
+                key={item.full_slug}
+              >
+                {item.name}
+              </Link>
+            )
+          })}
+        </div>
+        <LanguageMenu siblings={siblings} lang={lang} />
+      </div>
+    </div>
+  )
+}
+
 const Sidebar = ({ siblings, lang }) => {
   return (
     <StaticQuery
@@ -53,24 +91,19 @@ const Sidebar = ({ siblings, lang }) => {
         const content = JSON.parse(data.storyblokEntry.content)
 
         return (
-          <div id="sidebar-container">
-            <Logo filename={content.logo.filename} text={content.logo_text} />
-            <div id="sidebar-content-container">
-              <div id="sidebar-menu-items-container">
-                {menuData.menuItems.map(item => {
-                  return (
-                    <Link
-                      className="sidebar-menu-item"
-                      to={`/${item.full_slug}`}
-                      key={item.full_slug}
-                    >
-                      {item.name}
-                    </Link>
-                  )
-                })}
-              </div>
-              <LanguageMenu siblings={siblings} lang={lang} />
-            </div>
+          <div id="header-container">
+            <DesktopSidebar
+              content={content}
+              menuData={menuData}
+              lang={lang}
+              siblings={siblings}
+            />
+            <MobileHeader
+              content={content}
+              menuData={menuData}
+              lang={lang}
+              siblings={siblings}
+            />
           </div>
         )
       }}

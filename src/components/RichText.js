@@ -2,7 +2,6 @@ import React from "react"
 import SbEditable from "storyblok-react"
 import { render, NODE_IMAGE } from "storyblok-rich-text-react-renderer"
 import "../style/rich-text.css"
-import FixedImage from "./image-components/FixedImage"
 import Img from "gatsby-image"
 import { getFixedGatsbyImage } from "gatsby-storyblok-image"
 

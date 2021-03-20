@@ -2,8 +2,6 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import StoryblokService from "../utils/storyblok-service"
-
-import Header from "../components/header/header"
 import "../style/layout.css"
 import Sidebar from "../components/layout/sidebar"
 
