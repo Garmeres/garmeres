@@ -97,11 +97,10 @@ exports.onCreateNode = ({
     const nodeContent = JSON.stringify(nodeData)
     const nodeMeta = {
       id: createNodeId(`menu-data-${nodeData.key}`),
-      parent: null,
+      parent: node.id,
       children: [],
       internal: {
         type: "MenuData",
-        mediaType: "text/html",
         content: nodeContent,
         contentDigest: createContentDigest(nodeData),
       },

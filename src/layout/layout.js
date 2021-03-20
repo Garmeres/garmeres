@@ -5,7 +5,7 @@ import StoryblokService from "../utils/storyblok-service"
 import "../style/layout.css"
 import Sidebar from "../components/layout/sidebar"
 
-const Layout = ({ children, siblings, lang }) => {
+const Layout = ({ children, siblings, lang, location }) => {
   return (
     <div id="page-container">
       <Helmet
@@ -24,7 +24,11 @@ const Layout = ({ children, siblings, lang }) => {
           },
         ]}
       />
-      <Sidebar siblings={siblings} lang={lang} />
+      <Sidebar
+        siblings={siblings}
+        lang={lang != null ? lang : "default"}
+        location={location}
+      />
       <main>{children}</main>
       <footer></footer>
     </div>

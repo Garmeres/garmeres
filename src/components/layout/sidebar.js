@@ -92,14 +92,14 @@ const DesktopSidebar = ({ content, menuData, lang, siblings, logoImage }) => {
   )
 }
 
-const Sidebar = ({ siblings, lang }) => {
+const Sidebar = ({ siblings, lang, location }) => {
   return (
     <StaticQuery
       query={query}
       render={data => {
-        const menuData = data.menuData.edges.find(({ node }) => {
-          return node.lang === lang
-        }).node
+        const menuData = data.menuData.edges.find(
+          menuNode => menuNode.node.lang == lang
+        ).node
         const content = JSON.parse(data.storyblokEntry.content)
         const logoImage = getFluidGatsbyImage(content.logo.filename, {
           maxWidth: 180,

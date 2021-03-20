@@ -25,9 +25,11 @@ const LanguageMenu = ({ siblings, lang }) => {
           <div id="sidebar-language-menu">
             {data.languageLabels.edges.map(({ node }) => {
               const nodeLang = node.lang
-              const full_slug = siblings.edges.find(
-                ({ node }) => node.lang == nodeLang
-              ).node.full_slug
+              const full_slug =
+                siblings != null
+                  ? siblings.edges.find(({ node }) => node.lang == nodeLang)
+                      .node.full_slug
+                  : `${nodeLang != "default" ? nodeLang : "en"}`
               return (
                 <Link
                   key={node.lang}

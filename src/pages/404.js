@@ -5,7 +5,9 @@ import StoryblokService from "../utils/storyblok-service"
 
 export default class extends React.Component {
   state = {
-    story: {},
+    story: {
+      lang: "default",
+    },
   }
 
   async getInitialStory() {

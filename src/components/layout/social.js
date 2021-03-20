@@ -20,7 +20,7 @@ const query = graphql`
 const SocialIcon = ({ Icon, url }) => {
   return (
     <IconContext.Provider value={{ className: "social-icon", size: 25 }}>
-      <a href={url}>
+      <a href={url} target="blank">
         <Icon />
       </a>
     </IconContext.Provider>
