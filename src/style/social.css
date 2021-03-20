@@ -13,9 +13,12 @@
 @media only screen and (max-width: 1280px) {
   #social-container {
     margin: auto 10px;
-    margin-left: 30px;
+    align-self: left;
   }
 }
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 480px) {
+  #social-container a {
+    margin: auto 15px;
+  }
 }

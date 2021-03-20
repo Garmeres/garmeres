@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import StoryblokService from "../utils/storyblok-service"
 import "../style/layout.css"
-import Sidebar from "../components/layout/sidebar"
+import Header from "../components/layout/header"
 
 const Layout = ({ children, siblings, lang, location }) => {
   return (
@@ -24,7 +24,7 @@ const Layout = ({ children, siblings, lang, location }) => {
           },
         ]}
       />
-      <Sidebar
+      <Header
         siblings={siblings}
         lang={lang != null ? lang : "default"}
         location={location}
