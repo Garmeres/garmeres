@@ -114,6 +114,7 @@
 #mobile-menu-container.visible {
   animation-name: menu-slide-down;
   animation-duration: 0.8s;
+  height: auto;
 }
 
 #mobile-menu-container.hidden {
@@ -149,11 +150,11 @@
   right: 0;
   left: auto;
   top: 0;
-  width: 100%;
-  visibility: visible;
+  width: 0;
   height: auto;
   background-color: var(--mobile-menu-color);
   z-index: 2;
+  overflow-x: hidden;
 }
 
 #mobile-menu-content-container {
@@ -168,6 +169,30 @@
   width: 100%;
   padding: 0 var(--mobile-header-line-margin);
   box-sizing: border-box;
+  animation-duration: 0.3s;
+  animation-name: mobile-menu-item-fade-out;
+}
+
+.mobile-menu-item-container:hover {
+  background-color: var(--mobile-menu-hover-color);
+  animation-name: mobile-menu-item-fade-in;
+}
+
+@keyframes mobile-menu-item-fade-in {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: var(--mobile-menu-hover-color);
+  }
+}
+@keyframes mobile-menu-item-fade-out {
+  from {
+    background-color: var(--mobile-menu-hover-color);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0);
+  }
 }
 
 .mobile-menu-item {
@@ -179,10 +204,6 @@
   text-decoration: none;
   font-size: 14pt;
   border-bottom: 1px solid var(--mobile-menu-line-color);
-}
-
-.mobile-menu-item-container:hover {
-  background-color: var(--mobile-menu-hover-color);
 }
 
 @media only screen and (max-width: 1080px) {
@@ -198,6 +219,12 @@
   }
   #mobile-header-content-container {
     height: var(--mobile-header-height);
+  }
+  #mobile-menu.visible,
+  #mobile-menu.hidden {
+    height: auto;
+    visibility: visible;
+    width: 100%;
   }
 }
 
