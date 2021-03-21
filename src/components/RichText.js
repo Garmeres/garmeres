@@ -20,6 +20,10 @@ const RichText = ({ blok }) => {
                   alt={props.alt}
                   imgStyle={{
                     objectFit: "contain",
+                    zIndex: 0,
+                  }}
+                  style={{
+                    zIndex: 0,
                   }}
                 />
               )

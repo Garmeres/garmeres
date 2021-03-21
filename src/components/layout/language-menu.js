@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, StaticQuery, Link } from "gatsby"
+import "../../style/language-menu.css"
 
 const query = graphql`
   query LanguageMenu {

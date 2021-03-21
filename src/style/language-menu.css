@@ -1,0 +1,24 @@
+#sidebar-language-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 30px 15px;
+  margin: 0px;
+  border-top: 1px solid var(--mobile-menu-line-color);
+  min-height: 60px;
+  height: 10%;
+}
+
+#sidebar-language-menu a {
+  color: white;
+  text-decoration: none;
+  margin: auto 10px;
+  z-index: 3;
+}
+@media only screen and (max-width: 1080px) {
+  #sidebar-language-menu {
+    justify-self: flex-end;
+    border-top: none;
+    z-index: 3;
+  }
+}

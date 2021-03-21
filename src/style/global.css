@@ -25,6 +25,10 @@ body {
   padding: 0;
 }
 
+.gatsby-image-wrapper {
+  z-index: 0;
+}
+
 #page-container {
   display: flex;
   flex-direction: row;
