@@ -6,7 +6,6 @@ import { Link } from "gatsby"
 import LanguageMenu from "./language-menu"
 
 const MobileMenu = ({ menuData, lang, siblings, show, toggleMenu }) => {
-  console.log(menuData)
   return (
     <div
       id="mobile-menu-container"

@@ -40,7 +40,7 @@ const Selector = ({ blok }) => {
                 }).node.full_slug
                 return (
                   <Link key={node.id} to={full_slug}>
-                    {content.language_label}
+                    <span className="language-selector-item-text">{content.language_label}</span>
                   </Link>
                 )
               })}
