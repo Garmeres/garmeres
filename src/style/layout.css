@@ -2,7 +2,7 @@ main {
   flex-grow: 1;
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1080px) {
   main {
     margin: 0 auto;
     padding: 0;

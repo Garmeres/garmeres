@@ -10,7 +10,7 @@
   height: 25px;
 }
 
-@media only screen and (max-width: 1280px) {
+@media only screen and (max-width: 1080px) {
   #social-container {
     margin: auto 10px;
     align-self: left;
@@ -18,7 +18,12 @@
 }
 
 @media only screen and (max-width: 480px) {
+  #social-container {
+    justify-content: space-evenly;
+    width: 35%;
+    min-width: 100px;
+  }
   #social-container a {
-    margin: auto 15px;
+    margin: auto 0;
   }
 }
