@@ -61,7 +61,7 @@ const MobileHeader = ({ content, menuData, lang, siblings, logoImage }) => {
         lang={lang}
         siblings={siblings}
         show={showMenu}
-        toggleMenu={toggleMenu}
+        toggleMenu={() => setShowMenu(false)}
       />
     </div>
   )

@@ -67,7 +67,7 @@
   flex-grow: 1;
   z-index: -1;
   width: 100%;
-  height: 100%;
+  height: 0;
   background-color: rgba(0, 0, 0, 0);
 }
 
@@ -76,6 +76,7 @@
   animation-name: menu-overlay-fade-in;
   animation-duration: 0.3s;
   z-index: 1;
+  height: 100%;
 }
 
 #mobile-menu-overlay.hidden {
