@@ -15,7 +15,7 @@ const MobileMenu = ({ menuData, lang, siblings, show, toggleMenu }) => {
         id="mobile-menu-overlay"
         className={`${show != null ? (show ? "visible" : "hidden") : ""}`}
         onClick={() => toggleMenu()}
-      ></div>
+      />
       <div
         id="mobile-menu"
         role="menu"
