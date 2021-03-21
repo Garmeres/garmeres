@@ -16,6 +16,7 @@ const RichText = ({ blok }) => {
             [NODE_IMAGE]: (children, props) => {
               return (
                 <Img
+                  className="rich-text-image"
                   fixed={getFixedGatsbyImage(props.src)}
                   alt={props.alt}
                   imgStyle={{

@@ -2,7 +2,6 @@
   --mobile-header-height: 90px;
   --sidebar-width: 20%;
   --logo-size: 70px;
-
 }
 
 #header-container {
@@ -99,7 +98,6 @@
   }
 }
 
-
 @media only screen and (max-width: 1080px) {
   #header-container {
     display: flex;
@@ -164,6 +162,8 @@
 
 @media only screen and (max-width: 480px) {
   .sidebar-logo-container {
+    max-width: auto;
     width: auto;
+    min-width: auto;
   }
 }
