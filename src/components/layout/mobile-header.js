@@ -51,8 +51,9 @@ const MobileHeader = ({ content, menuData, lang, siblings, logoImage }) => {
     <div id="mobile-header-container">
       <div id="mobile-header-content-container">
         <Logo image={logoImage} text={content.logo_text} />
-        <Social lang={lang} />
+
         <div id="mobile-header-left">
+          <Social lang={lang} />
           <BurgerButton onClick={() => toggleMenu()} />
         </div>
       </div>

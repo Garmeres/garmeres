@@ -1,10 +1,10 @@
 :root {
   --mobile-logo-size: 60px;
-  --mobile-logo-size-small: 40px;
+  --mobile-logo-size-small: 50px;
   --mobile-header-height-small: 65px;
   --burger-button-height: 35px;
   --burger-button-width: 40px;
-  --burger-button-width-small: 35px;
+  --burger-button-width-small: 30px;
   --burger-button-height-small: 30px;
   --mobile-header-color: #333;
   --mobile-menu-hover-color: rgba(90, 90, 90, 0.95);
@@ -19,9 +19,7 @@
   visibility: hidden;
   flex-grow: 1;
   box-sizing: border-box;
-  width: 100vw;
-  max-width: 100vw;
-  min-width: 100vw;
+  width: 100%;
 }
 
 #mobile-header-content-container {
@@ -40,12 +38,14 @@
 }
 
 .burger-button-container {
+  min-width: var(--burger-button-width);
   width: var(--burger-button-width);
   height: var(--burger-button-height);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: auto 20px;
+  margin: auto 0;
+  margin-right: 20px;
   cursor: pointer;
 }
 
@@ -107,9 +107,8 @@
 #mobile-menu-container {
   position: absolute;
   display: flex;
+  align-self: flex-end;
   top: var(--mobile-header-height);
-  right: 0;
-  left: auto;
   max-width: 40%;
   min-width: 480px;
   height: 0;
@@ -236,8 +235,8 @@
 
 @media only screen and (max-width: 720px) {
   #mobile-menu-container {
-    max-width: 100vw;
-    width: 100vw;
+    max-width: 100%;
+    width: 100%;
   }
 }
 
@@ -271,6 +270,7 @@
     border-radius: 10px;
   }
   .burger-button-container {
+    min-width: var(--burger-button-width-small);
     width: var(--burger-button-width-small);
     height: var(--burger-button-height-small);
   }

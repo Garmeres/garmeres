@@ -5,7 +5,7 @@
 }
 
 #social-container a {
-  margin: 20px 10px;
+  margin: 20px 15px;
   color: #eee;
   height: 25px;
 }
@@ -14,16 +14,18 @@
   #social-container {
     margin: auto 10px;
     align-self: left;
+    margin-right: 20px;
+  }
+  #social-container a {
+    margin: 20px 20px;
   }
 }
 
 @media only screen and (max-width: 480px) {
   #social-container {
-    justify-content: space-evenly;
-    width: 35%;
-    min-width: 100px;
+    justify-content: flex-end;
   }
   #social-container a {
-    margin: auto 0;
+    margin: auto 10px;
   }
 }
