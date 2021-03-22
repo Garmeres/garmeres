@@ -1,14 +1,15 @@
 import React from "react"
 import SbEditable from "storyblok-react"
-import "../style/featured.css"
+import "../../style/featured.css"
 import Img from "gatsby-image"
 import { getFluidGatsbyImage } from "gatsby-storyblok-image"
+import DynamicComponent from "../DynamicComponent"
 
 const Featured = ({ blok }) => {
-  console.log(blok)
   const image = getFluidGatsbyImage(blok.background_image.filename, {
     maxWidth: 900,
   })
+  console.log(blok)
   return (
     <SbEditable content={blok} key={blok._uid}>
       <div className="featured-container">
@@ -24,6 +25,23 @@ const Featured = ({ blok }) => {
             objectFit: "100%",
           }}
         />
+        <div
+          className="featured-image-overlay"
+          style={{
+            backgroundColor: blok.overlay_color.color,
+            opacity: blok.overlay_opacity,
+          }}
+        />
+        <div
+          className="featured-body"
+          style={{
+            color: blok.text_color.color,
+          }}
+        >
+          {blok.body.map(item => {
+            return <DynamicComponent blok={item} />
+          })}
+        </div>
       </div>
     </SbEditable>
   )
