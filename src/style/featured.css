@@ -7,6 +7,19 @@
   height: auto;
 }
 
+.featured-container * {
+  font-family: "Spartan";
+}
+
+.featured-container h1 {
+  font-size: 36pt;
+  font-weight: 500;
+}
+
+.featured-container p {
+  font-size: 14pt;
+}
+
 .featured-image-container {
   position: absolute;
   height: 100%;
@@ -90,6 +103,7 @@
   position: relative;
   padding: 15px 20px;
   opacity: 1;
+  font-size: 14pt;
 }
 
 @media only screen and (max-width: 480px) {

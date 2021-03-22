@@ -7,6 +7,29 @@
   max-width: 100%;
 }
 
+.rich-text * {
+}
+
+.rich-text p,
+.rich-text a,
+.rich-text span {
+  font-size: 14pt;
+  font-family: "Newsreader";
+}
+
+.rich-text p {
+  line-height: 1.5rem;
+}
+
+.rich-text h1,
+.rich-text h2,
+.rich-text h3,
+.rich-text h4,
+.rich-text h5,
+.rich-text h6 {
+  margin-top: 2em;
+}
+
 @media only screen and (max-width: 1080px) {
 }
 
