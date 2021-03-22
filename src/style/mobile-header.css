@@ -212,7 +212,8 @@
 
 @media only screen and (max-width: 1080px) {
   #mobile-menu-container {
-    height: auto;
+    height: 0;
+    width: 0 !important;
   }
   #mobile-menu.visible {
     visibility: visible;
@@ -224,11 +225,15 @@
   #mobile-header-content-container {
     height: var(--mobile-header-height);
   }
-  #mobile-menu.visible,
-  #mobile-menu.hidden {
+  #mobile-menu.visible {
     height: auto;
     visibility: visible;
     width: 100%;
+  }
+  #mobile-menu.hidden {
+    height: auto;
+    visibility: visible;
+    width: 0;
   }
 }
 

@@ -24,7 +24,7 @@ const MobileMenu = ({ menuData, lang, siblings, show, toggleMenu }) => {
         <div id="mobile-menu-content-container">
           {menuData.menuItems.map(item => {
             return (
-              <div className="mobile-menu-item-container">
+              <div className="mobile-menu-item-container" key={item.full_slug}>
                 <Link to={`/${item.full_slug}`} className="mobile-menu-item">
                   {item.name}
                 </Link>

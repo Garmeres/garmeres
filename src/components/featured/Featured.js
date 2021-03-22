@@ -9,7 +9,6 @@ const Featured = ({ blok }) => {
   const image = getFluidGatsbyImage(blok.background_image.filename, {
     maxWidth: 900,
   })
-  console.log(blok)
   return (
     <SbEditable content={blok} key={blok._uid}>
       <div className="featured-container">
@@ -39,7 +38,7 @@ const Featured = ({ blok }) => {
           }}
         >
           {blok.body.map(item => {
-            return <DynamicComponent blok={item} />
+            return <DynamicComponent key={item._uid} blok={item} />
           })}
         </div>
       </div>
