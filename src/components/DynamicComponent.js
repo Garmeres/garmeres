@@ -4,12 +4,14 @@ import Placeholder from "./Placeholder"
 import LogoImage from "./image-components/LogoImage"
 import LanguageSelector from "./index/LanguageSelector"
 import RichText from "./RichText"
+import Featured from "./Featured"
 
 const Components = {
   teaser: Teaser,
   logo_image: LogoImage,
   language_selector: LanguageSelector,
   rich_text: RichText,
+  featured: Featured,
 }
 
 const Component = ({ blok }) => {

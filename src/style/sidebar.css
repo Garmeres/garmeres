@@ -1,13 +1,15 @@
 :root {
   --mobile-header-height: 90px;
   --sidebar-width: 20%;
+  --sidebar-min-width: 280px;
   --logo-size: 70px;
 }
 
 #header-container {
   display: flex;
   flex-direction: row;
-  width: var(--sidebar-width);
+  margin-right: calc(max(var(--sidebar-min-width), var(--sidebar-width)));
+  width: 0;
 }
 
 #sidebar-container {
@@ -17,8 +19,8 @@
   background-color: #222;
   color: white;
   width: var(--sidebar-width);
+  min-width: var(--sidebar-min-width);
   height: 100%;
-  min-width: 280px;
 }
 
 #sidebar-content-container {

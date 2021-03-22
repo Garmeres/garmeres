@@ -1,7 +1,23 @@
 .rich-text {
-  width: 100%;
+  width: auto;
+  margin: 30px 10%;
 }
 
 .rich-text .gatsby-image-wrapper {
   max-width: 100%;
+}
+
+@media only screen and (max-width: 1080px) {
+}
+
+@media only screen and (max-width: 720px) {
+  .rich-text {
+    margin: 30px 5%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .rich-text {
+    margin: 30px 15px;
+  }
 }
