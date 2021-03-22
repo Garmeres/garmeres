@@ -47,6 +47,7 @@
   margin: auto 0;
   margin-right: 20px;
   cursor: pointer;
+  outline: none;
 }
 
 .burger-button-bar {
