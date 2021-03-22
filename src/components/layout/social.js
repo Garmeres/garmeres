@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, StaticQuery, Link } from "gatsby"
+import { graphql, StaticQuery } from "gatsby"
 import { IconContext } from "react-icons"
 import { FaFacebookSquare, FaInstagram } from "react-icons/fa"
 import "../../style/social.css"
@@ -33,7 +33,7 @@ const Social = ({ lang }) => {
       query={query}
       render={data => {
         const content = JSON.parse(
-          data.socials.edges.find(({ node }) => node.lang == lang).node.content
+          data.socials.edges.find(({ node }) => node.lang === lang).node.content
         )
         return (
           <div id="social-container">

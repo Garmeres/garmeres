@@ -4,7 +4,7 @@ import Layout from "../layout/index"
 import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
 
-export default class extends React.Component {
+export default class IndexPage extends React.Component {
   state = {
     story: {
       content: this.props.data.story

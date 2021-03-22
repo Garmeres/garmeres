@@ -36,7 +36,7 @@ const Selector = ({ blok }) => {
                 const content = JSON.parse(node.content)
                 const lang = node.lang
                 const full_slug = data.homePages.edges.find(({ node }) => {
-                  return node.lang == lang
+                  return node.lang === lang
                 }).node.full_slug
                 return (
                   <Link key={node.id} to={full_slug}>

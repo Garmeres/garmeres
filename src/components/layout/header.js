@@ -33,7 +33,7 @@ const Header = ({ siblings, lang }) => {
       query={query}
       render={data => {
         const menuData = data.menuData.edges.find(
-          menuNode => menuNode.node.lang == lang
+          menuNode => menuNode.node.lang === lang
         ).node
         const content = JSON.parse(data.storyblokEntry.content)
         const logoImage = getFluidGatsbyImage(content.logo.filename, {

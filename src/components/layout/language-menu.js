@@ -28,9 +28,9 @@ const LanguageMenu = ({ siblings, lang }) => {
               const nodeLang = node.lang
               const full_slug =
                 siblings != null
-                  ? siblings.edges.find(({ node }) => node.lang == nodeLang)
+                  ? siblings.edges.find(({ node }) => node.lang === nodeLang)
                       .node.full_slug
-                  : `${nodeLang != "default" ? nodeLang : "en"}`
+                  : `${nodeLang !== "default" ? nodeLang : "en"}`
               return (
                 <Link
                   key={node.lang}

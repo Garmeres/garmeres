@@ -3,7 +3,7 @@ import Page from "../components/Page"
 import Layout from "../layout/layout"
 import StoryblokService from "../utils/storyblok-service"
 
-export default class extends React.Component {
+export default class NotFoundPage extends React.Component {
   state = {
     story: {
       lang: "default",
