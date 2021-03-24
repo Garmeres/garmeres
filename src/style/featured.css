@@ -129,3 +129,16 @@
     opacity: 1;
   }
 }
+
+@media only screen and (max-height: 480px) {
+  .featured-container {
+    min-height: 90vh;
+    max-height: 100% !important;
+    height: auto !important;
+  }
+  .featured-image-container {
+    min-height: 90vh;
+    max-height: 100% !important;
+    height: auto !important;
+  }
+}

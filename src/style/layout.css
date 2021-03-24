@@ -5,7 +5,7 @@ main {
 @media only screen and (max-width: 1080px) {
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 480px), screen and (max-height: 480px) {
   main {
     margin-top: var(--mobile-header-height-small);
   }
