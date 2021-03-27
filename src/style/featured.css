@@ -106,7 +106,7 @@
   font-size: 14pt;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 480px)  {
   .featured-container {
     min-height: 60vh;
     max-height: auto;
