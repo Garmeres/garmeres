@@ -7,7 +7,9 @@
   max-width: 100%;
 }
 
-.rich-text * {
+.rich-text u,
+.rich-text i {
+  font-size: calc(100% - 2pt);
 }
 
 .rich-text p,
@@ -28,6 +30,10 @@
 .rich-text h5,
 .rich-text h6 {
   margin-top: 2em;
+}
+
+.rich-text h2 {
+  font-size: 1.4em;
 }
 
 @media only screen and (max-width: 1080px) {

@@ -24,7 +24,7 @@ const MobileMenu = ({ menuData, lang, siblings, show, toggleMenu }) => {
         <div id="mobile-menu-content-container">
           {menuData != null
             ? menuData.menuItems.map(item => {
-                return (
+                return item != null ? (
                   <div
                     className="mobile-menu-item-container"
                     key={item.full_slug}
@@ -36,7 +36,7 @@ const MobileMenu = ({ menuData, lang, siblings, show, toggleMenu }) => {
                       {item.name}
                     </Link>
                   </div>
-                )
+                ) : null
               })
             : null}
         </div>

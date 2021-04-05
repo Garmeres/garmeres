@@ -12,7 +12,7 @@ const DesktopSidebar = ({ content, menuData, lang, siblings, logoImage }) => {
         <div id="sidebar-menu-items-container">
           {menuData != null
             ? menuData.menuItems.map(item => {
-                return (
+                return item != null ? (
                   <Link
                     className="sidebar-menu-item"
                     to={`/${item.full_slug}`}
@@ -20,7 +20,7 @@ const DesktopSidebar = ({ content, menuData, lang, siblings, logoImage }) => {
                   >
                     {item.name}
                   </Link>
-                )
+                ) : null
               })
             : null}
         </div>
