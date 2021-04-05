@@ -32,9 +32,10 @@ const Header = ({ siblings, lang }) => {
     <StaticQuery
       query={query}
       render={data => {
-        const menuData = data.menuData.edges.find(
+        const menu = data.menuData.edges.find(
           menuNode => menuNode.node.lang === lang
-        ).node
+        )
+        const menuData = menu != null ? menu.node : null
         const content = JSON.parse(data.storyblokEntry.content)
         const logoImage = getFluidGatsbyImage(content.logo.filename, {
           maxWidth: 180,

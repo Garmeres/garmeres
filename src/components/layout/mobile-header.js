@@ -22,15 +22,23 @@ const MobileMenu = ({ menuData, lang, siblings, show, toggleMenu }) => {
         className={`${show != null ? (show ? "visible" : "hidden") : ""}`}
       >
         <div id="mobile-menu-content-container">
-          {menuData.menuItems.map(item => {
-            return (
-              <div className="mobile-menu-item-container" key={item.full_slug}>
-                <Link to={`/${item.full_slug}`} className="mobile-menu-item">
-                  {item.name}
-                </Link>
-              </div>
-            )
-          })}
+          {menuData != null
+            ? menuData.menuItems.map(item => {
+                return (
+                  <div
+                    className="mobile-menu-item-container"
+                    key={item.full_slug}
+                  >
+                    <Link
+                      to={`/${item.full_slug}`}
+                      className="mobile-menu-item"
+                    >
+                      {item.name}
+                    </Link>
+                  </div>
+                )
+              })
+            : null}
         </div>
         <LanguageMenu siblings={siblings} lang={lang} />
       </div>

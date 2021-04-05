@@ -10,17 +10,19 @@ const DesktopSidebar = ({ content, menuData, lang, siblings, logoImage }) => {
       <Logo image={logoImage} text={content.logo_text} />
       <div id="sidebar-content-container">
         <div id="sidebar-menu-items-container">
-          {menuData.menuItems.map(item => {
-            return (
-              <Link
-                className="sidebar-menu-item"
-                to={`/${item.full_slug}`}
-                key={item.full_slug}
-              >
-                {item.name}
-              </Link>
-            )
-          })}
+          {menuData != null
+            ? menuData.menuItems.map(item => {
+                return (
+                  <Link
+                    className="sidebar-menu-item"
+                    to={`/${item.full_slug}`}
+                    key={item.full_slug}
+                  >
+                    {item.name}
+                  </Link>
+                )
+              })
+            : null}
         </div>
         <div id="sidebar-menu-footer">
           <Social lang={lang} />
