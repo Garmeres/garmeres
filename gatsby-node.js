@@ -127,16 +127,18 @@ const resolveMenuItems = (source, context) => {
         firstOnly: true,
       })
       .then(pageNode => {
-        const translated = pageNode.translated_slugs.find(
-          ({ lang }) => lang == source.lang
-        )
-        return {
-          name:
-            translated != null && translated.name != null
-              ? translated.name
-              : pageNode.name,
-          full_slug: pageNode.full_slug,
-        }
+        if (pageNode != null) {
+          const translated = pageNode.translated_slugs.find(
+            ({ lang }) => lang == source.lang
+          )
+          return {
+            name:
+              translated != null && translated.name != null
+                ? translated.name
+                : pageNode.name,
+            full_slug: pageNode.full_slug,
+          }
+        } else return null
       })
   )
 }
