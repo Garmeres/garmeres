@@ -8,6 +8,7 @@ import Featured from "./featured/Featured"
 import FeaturedTitle from "./featured/FeaturedTitle"
 import FeaturedText from "./featured/FeaturedText"
 import CallToAction from "./featured/CallToAction"
+import BlogBrowser from "./blog/blog-browser"
 
 const Components = {
   teaser: Teaser,
@@ -18,6 +19,7 @@ const Components = {
   featured_title: FeaturedTitle,
   featured_text: FeaturedText,
   call_to_action: CallToAction,
+  blog_browser: BlogBrowser,
 }
 
 const Component = ({ blok }) => {
