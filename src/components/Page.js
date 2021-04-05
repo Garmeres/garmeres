@@ -4,10 +4,11 @@ import SbEditable from "storyblok-react"
 
 const Page = ({ blok }) => {
   const content =
-    blok.body &&
-    blok.body.map(childBlok => (
-      <DynamicComponent blok={childBlok} key={childBlok._uid} />
-    ))
+    blok.body != null
+      ? blok.body.map(childBlok => (
+          <DynamicComponent blok={childBlok} key={childBlok._uid} />
+        ))
+      : null
 
   return <SbEditable content={blok}>{content}</SbEditable>
 }

@@ -20,7 +20,7 @@ const query = graphql`
 const SocialIcon = ({ Icon, url }) => {
   return (
     <IconContext.Provider value={{ className: "social-icon", size: 25 }}>
-      <a href={url} target="blank">
+      <a href={url != null ? url : "/"} target="blank">
         <Icon />
       </a>
     </IconContext.Provider>
@@ -32,13 +32,21 @@ const Social = ({ lang }) => {
     <StaticQuery
       query={query}
       render={data => {
-        const content = JSON.parse(
-          data.socials.edges.find(({ node }) => node.lang === lang).node.content
+        const rawNode = data.socials.edges.find(
+          ({ node }) => node.lang === lang
         )
+        const rawContent = rawNode != null ? rawNode.node.content : null
+        const content = rawContent != null ? JSON.parse(rawContent) : null
         return (
           <div id="social-container">
-            <SocialIcon Icon={FaFacebookSquare} url={content.facebook.url} />
-            <SocialIcon Icon={FaInstagram} url={content.instagram.url} />
+            <SocialIcon
+              Icon={FaFacebookSquare}
+              url={content != null ? content.facebook.url : null}
+            />
+            <SocialIcon
+              Icon={FaInstagram}
+              url={content != null ? content.instagram.url : null}
+            />
           </div>
         )
       }}

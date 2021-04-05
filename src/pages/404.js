@@ -7,6 +7,7 @@ export default class NotFoundPage extends React.Component {
   state = {
     story: {
       lang: "default",
+      content: null,
     },
   }
 
@@ -20,14 +21,19 @@ export default class NotFoundPage extends React.Component {
 
   async componentDidMount() {
     let story = await this.getInitialStory()
-    if (story.content) this.setState({ story })
-    setTimeout(() => StoryblokService.initEditor(this), 200)
+    if (story.content != null) {
+      this.setState({ story })
+    }
+    StoryblokService.initEditor(this)
   }
 
   render() {
-    let content = <h1>Not found</h1>
-    if (this.state.story.content)
-      content = <Page blok={this.state.story.content} />
+    let content =
+      this.state.story.content != null ? (
+        <Page blok={this.state.story.content} />
+      ) : (
+        <h1>Not found</h1>
+      )
     return (
       <Layout location={this.props.location} lang={this.state.story.lang}>
         {content}
