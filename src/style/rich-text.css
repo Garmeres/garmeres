@@ -20,7 +20,12 @@
 }
 
 .rich-text p {
-  line-height: 1.5rem;
+  line-height: 2em;
+}
+
+.rich-text h1:first-of-type {
+  line-height: initial !important;
+  margin-top: 1em !important;
 }
 
 .rich-text h1,
@@ -30,10 +35,7 @@
 .rich-text h5,
 .rich-text h6 {
   margin-top: 2em;
-}
-
-.rich-text h2 {
-  font-size: 1.4em;
+  line-height: initial !important;
 }
 
 @media only screen and (max-width: 1080px) {
@@ -43,10 +45,98 @@
   .rich-text {
     margin: 30px 5%;
   }
+  .rich-text u,
+  .rich-text i {
+    font-size: calc(100% - 2pt);
+  }
+
+  .rich-text p,
+  .rich-text a,
+  .rich-text span {
+    font-size: 1.1em;
+    font-family: "Newsreader";
+  }
+
+  .rich-text p {
+    line-height: 1.9em;
+  }
+
+  .rich-text h1:first-of-type {
+    line-height: initial !important;
+    margin-top: 0.5em !important;
+  }
+
+  .rich-text h1 {
+    font-size: 1.7em;
+  }
+
+  .rich-text h2 {
+    font-size: 1.2em;
+  }
+
+  .rich-text h3 {
+    font-size: 1em;
+  }
+
+  .rich-text h4 {
+    font-size: 0.9em;
+  }
+  .rich-text h5 {
+    font-size: 0.75em;
+  }
+
+  .rich-text h2,
+  .rich-text h3,
+  .rich-text h4,
+  .rich-text h5,
+  .rich-text h6 {
+    margin-top: 2em;
+  }
 }
 
 @media only screen and (max-width: 480px) {
   .rich-text {
     margin: 30px 15px;
+  }
+
+  .rich-text p,
+  .rich-text a,
+  .rich-text span {
+    font-size: 1em;
+  }
+
+  .rich-text p {
+    line-height: 1.9em;
+  }
+
+  .rich-text h1:first-of-type {
+    line-height: initial !important;
+    margin-top: 0 !important;
+  }
+  .rich-text h1 {
+    font-size: 1.5em;
+  }
+
+  .rich-text h2 {
+    font-size: 1em;
+    margin-bottom: 0;
+  }
+
+  .rich-text h3 {
+    font-size: 0.85em;
+    margin-bottom: 0;
+  }
+
+  .rich-text h4 {
+    font-size: 0.8em;
+    margin-bottom: 0;
+  }
+  .rich-text h5 {
+    font-size: 0.7em;
+    margin-bottom: 0;
+  }
+  .rich-text h6 {
+    font-size: 0.65em;
+    margin-bottom: 0;
   }
 }
