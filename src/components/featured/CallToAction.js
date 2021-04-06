@@ -7,7 +7,9 @@ const CallToAction = ({ blok }) => {
     <SbEditable content={blok}>
       <div className="featured-call-to-action">
         <Link
-          to={`/${blok.link.url}`}
+          to={`/${
+            blok.link.story != null ? blok.link.story.full_slug : blok.link.url
+          }`}
           style={{
             color: blok.color.color,
           }}

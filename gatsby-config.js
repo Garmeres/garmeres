@@ -43,6 +43,8 @@ module.exports = {
         accessToken: "cqYfQpnpPi9yS2MBQADiQQtt",
         homeSlug: "home",
         version: "published", //process.env.NODE_ENV === "production" ? "published" : "draft",
+        resolveLinks: "url",
+        includeLinks: true,
       },
     },
   ],

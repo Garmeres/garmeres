@@ -40,6 +40,7 @@ class StoryblokService {
       params.cv = window.StoryblokCacheVersion
     }
 
+    params.resolve_links = "url"
     return this.client.get(slug, params)
   }
 
