@@ -6,6 +6,7 @@ import "../../style/blog-browser.css"
 import Img from "gatsby-image"
 import EllipsisText from "../EllipsisText"
 import { blocksToText } from "../../utils/blocks-to-text"
+import { Link } from "gatsby"
 
 let Storyblok = new StoryblokClient({
   accessToken: "cqYfQpnpPi9yS2MBQADiQQtt",
@@ -26,8 +27,9 @@ const BlogPost = ({ story }) => {
         <Img fluid={thumbnail} objectFit="contain" objectPosition="50% 50%" />
       </div>
       <div className="blog-post-body">
-        <h2>Title</h2>
+        <h2>{story.name}</h2>
         <EllipsisText text={blocksToText(story.content.body)} />
+        <Link to={`/${story.full_slug}`}>Read more</Link>
       </div>
     </div>
   )
