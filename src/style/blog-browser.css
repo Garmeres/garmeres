@@ -62,6 +62,28 @@
   height: 20px;
 }
 
+#show-more-button-container {
+  display: flex;
+  justify-content: center;
+  min-height: 70px;
+  margin: auto;
+  width: 100%;
+}
+
+#show-more-button-container button {
+  width: 100%;
+  border: none;
+  background-color: #eaeaea;
+  font-size: 14pt;
+  color: #222;
+}
+
+#show-more-button-container button:hover {
+  cursor: pointer;
+  background-color: #efefef;
+  color: #333;
+}
+
 @media only screen and (max-width: 1540px) {
   :root {
     --post-thumbnail-width: 320px;

@@ -7,6 +7,7 @@ import Img from "gatsby-image"
 import EllipsisText from "../EllipsisText"
 import { blocksToText } from "../../utils/blocks-to-text"
 import { Link } from "gatsby"
+import ClipLoader from "react-spinners/BeatLoader"
 
 let Storyblok = new StoryblokClient({
   accessToken: "cqYfQpnpPi9yS2MBQADiQQtt",
@@ -68,10 +69,32 @@ const BlogBrowserFooter = ({ page, maxPage, setPage }) => {
   ) : null
 }
 
+const MoreButton = ({ isLoading, onClick }) => {
+  return (
+    <div id="show-more-button-container">
+      {isLoading ? (
+        <ClipLoader
+          loading={isLoading}
+          css={{
+            margin: "auto",
+          }}
+          margin={4}
+          size={10}
+          color="#999"
+        />
+      ) : (
+        <button onClick={onClick}>Show more...</button>
+      )}
+    </div>
+  )
+}
+
 export default ({ blok }) => {
   const [posts, setPosts] = useState([])
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
+  const [isMore, setIsMore] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     async function getStories() {
@@ -106,7 +129,7 @@ export default ({ blok }) => {
             <BlogPost key={i++} story={post} />
           ))}
         </div>
-        <BlogBrowserFooter page={page} maxPage={maxPage} setPage={setPage} />
+        <MoreButton isLoading={isLoading} />
       </div>
     </SbEditable>
   )
