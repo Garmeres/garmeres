@@ -23,6 +23,18 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      blogPosts: allStoryblokEntry(
+        filter: { field_component: { eq: "blog-post" } }
+      ) {
+        edges {
+          node {
+            id
+            full_slug
+            lang
+            uuid
+          }
+        }
+      }
       homePages: allStoryblokEntry(filter: { name: { eq: "Home" } }) {
         edges {
           node {
@@ -37,6 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
 
   const pageTemplate = path.resolve(`./src/templates/page-template.js`)
+  const blogPostTemplate = path.resolve(`./src/templates/blog-post-template.js`)
 
   result.data.stories.edges
     .filter(({ node }) => node.full_slug !== "/" && node.full_slug != "index")
@@ -50,6 +63,17 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     })
+
+  result.data.blogPosts.edges.map(({ node }) => {
+    createPage({
+      path: node.full_slug,
+      component: blogPostTemplate,
+      context: {
+        nodeId: node.id,
+        uuid: node.uuid,
+      },
+    })
+  })
 
   result.data.homePages.edges.map(({ node }) => {
     createPage({
@@ -155,5 +179,3 @@ exports.createResolvers = ({ createResolvers }) => {
   }
   createResolvers(resolvers)
 }
-
-
