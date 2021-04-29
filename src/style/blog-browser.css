@@ -6,6 +6,7 @@
   --post-h2-font-size: 18pt;
   --post-font-size: 12pt;
   --post-a-font-size: 13pt;
+  --post-thumbnail-margin: 20px;
 }
 
 .blog-browser {
@@ -24,7 +25,7 @@
 .blog-browser-body {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-around;
   padding: 0 30px;
 }
@@ -38,6 +39,14 @@
     var(--post-bottom-margin) var(--post-side-margin);
 }
 
+.blog-browser-post-empty {
+  display: flex;
+  flex-direction: column;
+  width: var(--post-thumbnail-width);
+  height: 0;
+  margin: 0 var(--post-side-margin) 0 var(--post-side-margin);
+}
+
 .blog-post-thumbnail {
   min-width: var(--post-thumbnail-width);
   min-height: var(--post-thumbnail-width);
@@ -47,6 +56,7 @@
   max-height: var(--post-thumbnail-width);
   overflow: hidden;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: var(--post-thumbnail-margin);
 }
 
 .blog-post-body {

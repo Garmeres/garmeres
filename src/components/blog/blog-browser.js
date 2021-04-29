@@ -76,7 +76,7 @@ export default ({ blok }) => {
         starts_with: blok.source_path.story.full_slug,
         is_startpage: 0,
         page: page,
-        per_page: 2,
+        per_page: blok.page_capacity,
       })
       const total = stories.headers.total
       setMaxPage(Math.ceil(stories.headers.total / stories.headers["per-page"]))
@@ -97,12 +97,7 @@ export default ({ blok }) => {
           {posts.map(post => (
             <BlogPost key={i++} story={post} />
           ))}
-          {posts.map(post => (
-            <BlogPost key={i++} story={post} />
-          ))}
-          {posts.map(post => (
-            <BlogPost key={i++} story={post} />
-          ))}
+          <div class="blog-browser-post-empty"></div>
         </div>
         {page < maxPage ? (
           <MoreButton
