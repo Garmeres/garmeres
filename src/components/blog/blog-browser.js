@@ -94,7 +94,7 @@ export default ({ blok }) => {
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
   const [isMore, setIsMore] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function getStories() {
@@ -106,7 +106,8 @@ export default ({ blok }) => {
       })
       const total = stories.headers.total
       setMaxPage(Math.ceil(stories.headers.total / stories.headers["per-page"]))
-      setPosts(stories.data.stories)
+      setPosts(posts.concat(stories.data.stories))
+      setIsLoading(false)
     }
 
     getStories()
@@ -129,7 +130,17 @@ export default ({ blok }) => {
             <BlogPost key={i++} story={post} />
           ))}
         </div>
-        <MoreButton isLoading={isLoading} />
+        {page < maxPage ? (
+          <MoreButton
+            isLoading={isLoading}
+            onClick={() => {
+              if (page < maxPage) {
+                setIsLoading(true)
+                setPage(page + 1)
+              }
+            }}
+          />
+        ) : null}
       </div>
     </SbEditable>
   )
