@@ -25,7 +25,15 @@ const BlogPost = ({ story }) => {
   return (
     <div className="blog-browser-post-container">
       <div className="blog-post-thumbnail">
-        <Img fluid={thumbnail} objectFit="contain" objectPosition="50% 50%" />
+        <Img
+          fluid={thumbnail}
+          objectFit="cover"
+          objectPosition="50% 50%"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
       </div>
       <div className="blog-post-body">
         <h2>{story.name}</h2>
@@ -34,39 +42,6 @@ const BlogPost = ({ story }) => {
       </div>
     </div>
   )
-}
-
-const BlogBrowserFooter = ({ page, maxPage, setPage }) => {
-  const pageButtons = []
-  for (var i = 1; i <= maxPage; i++) {
-    pageButtons.push(i)
-  }
-
-  const PageButton = ({ text, to, enabled }) => {
-    return (
-      <button
-        className="blog-browser-page-button"
-        onClick={() => {
-          if (to >= 1 && to <= maxPage && to !== page) {
-            setPage(to)
-          }
-        }}
-        disabled={!enabled}
-      >
-        {text}
-      </button>
-    )
-  }
-
-  return maxPage > 1 ? (
-    <div className="blog-browser-footer">
-      <PageButton text="<" to={page - 1} enabled={page !== 1} />
-      {pageButtons.map(i => (
-        <PageButton key={i} text={i} to={i} enabled={true} />
-      ))}
-      <PageButton text=">" to={page + 1} enabled={page !== maxPage} />
-    </div>
-  ) : null
 }
 
 const MoreButton = ({ isLoading, onClick }) => {
@@ -93,7 +68,6 @@ export default ({ blok }) => {
   const [posts, setPosts] = useState([])
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
-  const [isMore, setIsMore] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
