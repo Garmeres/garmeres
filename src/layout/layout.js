@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet"
 import StoryblokService from "../utils/storyblok-service"
 import "../style/layout.css"
 import Header from "../components/layout/header"
+import Footer from "../components/Footer"
 
 const Layout = ({ children, siblings, lang, location }) => {
   return (
@@ -29,8 +30,10 @@ const Layout = ({ children, siblings, lang, location }) => {
         lang={lang != null ? lang : "default"}
         location={location}
       />
-      <main>{children}</main>
-      <footer></footer>
+      <main>
+        {children}
+        <Footer />
+      </main>
     </div>
   )
 }

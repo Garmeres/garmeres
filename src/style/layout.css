@@ -1,3 +1,17 @@
 main {
   flex-grow: 1;
 }
+footer {
+  position: relative !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px 0;
+  background-color: #333;
+}
+
+footer span {
+  font-size: 10pt;
+  margin: 5px auto;
+  color: #fafafa;
+}
