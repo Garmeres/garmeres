@@ -47,5 +47,6 @@ module.exports = {
         includeLinks: true,
       },
     },
+    "gatsby-plugin-offline",
   ],
 }
