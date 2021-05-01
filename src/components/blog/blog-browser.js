@@ -19,7 +19,7 @@ let Storyblok = new StoryblokClient({
 
 const BlogPost = ({ story }) => {
   const thumbnail = getFluidGatsbyImage(story.content.thumbnail.filename, {
-    maxWidth: 340,
+    maxWidth: 360,
   })
 
   return (
