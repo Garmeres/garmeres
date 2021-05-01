@@ -32,12 +32,16 @@ const resolve = item =>
 const resolveComponent = blok =>
   resolvers[blok.component] != null ? resolvers[blok.component](blok) : ""
 
-function blocksToText(blocks) {
+function blocksToText(blocks, maxLength = null) {
   var result = ""
 
   blocks.forEach((blok, index, array) => {
     result += resolveComponent(blok)
   })
+
+  if (maxLength != null && result.length > maxLength) {
+    result = `${result.substring(0, maxLength)}...`
+  }
 
   return result
 }

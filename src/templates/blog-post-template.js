@@ -5,6 +5,7 @@ import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
 import "../style/blog-post.css"
 import SEO from "../components/seo"
+import { blocksToText } from "../utils/blocks-to-text"
 
 class PageTemplate extends React.Component {
   state = {
@@ -55,6 +56,8 @@ class PageTemplate extends React.Component {
         <SEO
           content={JSON.parse(this.props.data.seo.content).seo}
           lang={this.props.data.story.lang}
+          description={blocksToText(this.state.story.content.body, 120)}
+          title={this.state.heading ? this.state.heading.title : null}
         />
         <Page blok={this.state.story.content} heading={this.state.heading} />
       </Layout>
