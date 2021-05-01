@@ -25,7 +25,6 @@ const Layout = ({ children }) => {
         ]}
       />
       <main id="index-main">{children}</main>
-      <footer></footer>
     </div>
   )
 }

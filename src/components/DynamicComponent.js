@@ -1,5 +1,5 @@
 import React from "react"
-import Teaser from "./Teaser"
+import { formatDateNow } from "../utils/format-helper"
 import Placeholder from "./Placeholder"
 import LogoImage from "./image-components/LogoImage"
 import LanguageSelector from "./index/LanguageSelector"
@@ -9,9 +9,21 @@ import FeaturedTitle from "./featured/FeaturedTitle"
 import FeaturedText from "./featured/FeaturedText"
 import CallToAction from "./featured/CallToAction"
 import BlogBrowser from "./blog/blog-browser"
+import Footer from "./Footer"
+
+const CustomText = ({ blok }) => {
+  return <span>{blok.text}</span>
+}
+
+const PublishedAt = ({ blok }) => {
+  return (
+    <span>
+      {blok.label} {formatDateNow()}
+    </span>
+  )
+}
 
 const Components = {
-  teaser: Teaser,
   logo_image: LogoImage,
   language_selector: LanguageSelector,
   rich_text: RichText,
@@ -20,6 +32,9 @@ const Components = {
   featured_text: FeaturedText,
   call_to_action: CallToAction,
   blog_browser: BlogBrowser,
+  footer: Footer,
+  custom_text: CustomText,
+  last_published: PublishedAt,
 }
 
 const Component = ({ blok }) => {

@@ -6,7 +6,7 @@ import "../style/layout.css"
 import Header from "../components/layout/header"
 import Footer from "../components/Footer"
 
-const Layout = ({ children, siblings, lang, location }) => {
+const Layout = ({ children, siblings, lang, location, footer }) => {
   return (
     <div id="page-container">
       <Helmet
@@ -32,7 +32,7 @@ const Layout = ({ children, siblings, lang, location }) => {
       />
       <main>
         {children}
-        <Footer />
+        <Footer blok={footer} />
       </main>
     </div>
   )

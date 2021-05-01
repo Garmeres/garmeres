@@ -35,6 +35,18 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      footers: allStoryblokEntry(
+        filter: { field_component: { eq: "footer" } }
+      ) {
+        edges {
+          node {
+            id
+            full_slug
+            lang
+            uuid
+          }
+        }
+      }
       homePages: allStoryblokEntry(filter: { name: { eq: "Home" } }) {
         edges {
           node {
@@ -48,6 +60,11 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
+  const footers = {}
+  result.data.footers.edges.map(({ node }) => {
+    footers[node.lang] = node.id
+  })
+
   const pageTemplate = path.resolve(`./src/templates/page-template.js`)
   const blogPostTemplate = path.resolve(`./src/templates/blog-post-template.js`)
 
@@ -60,6 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
           nodeId: node.id,
           uuid: node.uuid,
+          footerId: footers[node.lang],
         },
       })
     })
@@ -71,6 +89,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         nodeId: node.id,
         uuid: node.uuid,
+        footerId: footers[node.lang],
       },
     })
   })

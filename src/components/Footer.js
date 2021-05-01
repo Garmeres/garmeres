@@ -1,12 +1,21 @@
 import React from "react"
-import { formatDateNow } from "../utils/format-helper"
+import "../style/rich-text.css"
+import DynamicComponent from "./DynamicComponent"
+import SbEditable from "storyblok-react"
 
-export default () => {
+const Footer = ({ blok }) => {
+  const content = JSON.parse(blok.content)
   return (
-    <footer>
-      <span>Owned by Garmeres - Norwegian Section</span>
-      <span>Last published {formatDateNow()}</span>
-      <span>Created by Levi Sørum</span>
-    </footer>
+    <SbEditable content={blok} key={blok._uid}>
+      <footer>
+        <div id="footer-content">
+          {content.body.map(component => (
+            <DynamicComponent blok={component} key={component._uid} />
+          ))}
+        </div>
+      </footer>
+    </SbEditable>
   )
 }
+
+export default Footer

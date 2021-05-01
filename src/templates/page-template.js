@@ -35,6 +35,7 @@ class PageTemplate extends React.Component {
         location={this.props.location}
         siblings={this.props.data.siblings}
         lang={this.props.data.story.lang}
+        footer={this.props.data.footer}
       >
         <Page blok={this.state.story.content} />
       </Layout>
@@ -43,7 +44,7 @@ class PageTemplate extends React.Component {
 }
 
 export const query = graphql`
-  query Page($nodeId: String, $uuid: String) {
+  query Page($nodeId: String, $uuid: String, $footerId: String) {
     story: storyblokEntry(id: { eq: $nodeId }) {
       name
       content
@@ -51,6 +52,15 @@ export const query = graphql`
       uuid
       lang
     }
+
+    footer: storyblokEntry(id: { eq: $footerId }) {
+      name
+      content
+      full_slug
+      uuid
+      lang
+    }
+
     siblings: allStoryblokEntry(filter: { uuid: { eq: $uuid } }) {
       edges {
         node {

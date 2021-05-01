@@ -97,7 +97,7 @@ export default ({ blok }) => {
           {posts.map(post => (
             <BlogPost key={i++} story={post} />
           ))}
-          <div class="blog-browser-post-empty"></div>
+          <div className="blog-browser-post-empty"></div>
         </div>
         {page < maxPage ? (
           <MoreButton
