@@ -4,6 +4,7 @@ import Layout from "../layout/layout"
 import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
 import "../style/blog-post.css"
+import SEO from "../components/seo"
 
 class PageTemplate extends React.Component {
   state = {
@@ -29,9 +30,10 @@ class PageTemplate extends React.Component {
     if (story.content) {
       this.setState({ story })
       if (story.content.component === "blog-post") {
+        const title = this.props.data.story.title
         this.setState({
           heading: {
-            title: story.name,
+            title: title ? title : this.props.story.name,
             published_at: story.first_published_at,
             tags: story.tag_list,
             author: story.content.author,
@@ -50,6 +52,10 @@ class PageTemplate extends React.Component {
         lang={this.props.data.story.lang}
         footer={this.props.data.footer}
       >
+        <SEO
+          content={JSON.parse(this.props.data.seo.content).seo}
+          lang={this.props.data.story.lang}
+        />
         <Page blok={this.state.story.content} heading={this.state.heading} />
       </Layout>
     )
@@ -57,15 +63,29 @@ class PageTemplate extends React.Component {
 }
 
 export const query = graphql`
-  query BlogPost($nodeId: String, $uuid: String, $footerId: String) {
+  query BlogPost(
+    $nodeId: String
+    $uuid: String
+    $footerId: String
+    $seoId: String
+  ) {
     story: storyblokEntry(id: { eq: $nodeId }) {
       name
       content
       full_slug
       uuid
       lang
+      title
     }
     footer: storyblokEntry(id: { eq: $footerId }) {
+      name
+      content
+      full_slug
+      uuid
+      lang
+    }
+
+    seo: storyblokEntry(id: { eq: $seoId }) {
       name
       content
       full_slug

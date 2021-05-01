@@ -36,7 +36,7 @@ const BlogPost = ({ story }) => {
         />
       </div>
       <div className="blog-post-body">
-        <h2>{story.name}</h2>
+        <h2>{story.title}</h2>
         <EllipsisText text={blocksToText(story.content.body)} />
         <Link to={`/${story.full_slug}`}>Read more</Link>
       </div>
@@ -78,9 +78,21 @@ export default ({ blok }) => {
         page: page,
         per_page: blok.page_capacity,
       })
-      const total = stories.headers.total
       setMaxPage(Math.ceil(stories.headers.total / stories.headers["per-page"]))
-      setPosts(posts.concat(stories.data.stories))
+      setPosts(
+        posts.concat(
+          stories.data.stories.map(story => {
+            var title = story.name
+            var translated = story.translated_slugs.find(
+              item => item.lang === story.lang
+            )
+            if (translated != null) {
+              title = translated.name != null ? translated.name : story.name
+            }
+            return { ...story, title }
+          })
+        )
+      )
       setIsLoading(false)
     }
 

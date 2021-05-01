@@ -57,12 +57,27 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      seo: allStoryblokEntry(filter: { field_component: { eq: "site_seo" } }) {
+        edges {
+          node {
+            id
+            full_slug
+            lang
+            uuid
+          }
+        }
+      }
     }
   `)
 
   const footers = {}
   result.data.footers.edges.map(({ node }) => {
     footers[node.lang] = node.id
+  })
+
+  const seo = {}
+  result.data.seo.edges.map(({ node }) => {
+    seo[node.lang] = node.id
   })
 
   const pageTemplate = path.resolve(`./src/templates/page-template.js`)
@@ -78,6 +93,7 @@ exports.createPages = async ({ graphql, actions }) => {
           nodeId: node.id,
           uuid: node.uuid,
           footerId: footers[node.lang],
+          seoId: seo[node.lang],
         },
       })
     })
@@ -90,6 +106,7 @@ exports.createPages = async ({ graphql, actions }) => {
         nodeId: node.id,
         uuid: node.uuid,
         footerId: footers[node.lang],
+        seoId: seo[node.lang],
       },
     })
   })
@@ -101,6 +118,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         nodeId: node.id,
         uuid: node.uuid,
+        seoId: seo[node.lang],
       },
     })
   })
@@ -118,6 +136,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       lang: String!
       pageIds: [String]!
       menuItems: [MenuItem]!
+    }
+
+    type StoryblokEntry implements Node {
+      title: String
     }
   `
   createTypes(typeDefs)
@@ -192,6 +214,23 @@ exports.createResolvers = ({ createResolvers }) => {
       menuItems: {
         resolve: (source, args, context, info) => {
           return resolveMenuItems(source, context)
+        },
+      },
+    },
+    StoryblokEntry: {
+      title: {
+        resolve: (source, args, context, info) => {
+          var result = source.name
+
+          var translated = source.translated_slugs.find(
+            item => item.lang === source.lang
+          )
+
+          if (translated != null) {
+            result = translated.name
+          }
+
+          return result
         },
       },
     },

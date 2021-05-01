@@ -3,6 +3,7 @@ import Page from "../components/Page"
 import Layout from "../layout/layout"
 import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
+import SEO from "../components/seo"
 
 class PageTemplate extends React.Component {
   state = {
@@ -37,6 +38,11 @@ class PageTemplate extends React.Component {
         lang={this.props.data.story.lang}
         footer={this.props.data.footer}
       >
+        <SEO
+          content={JSON.parse(this.props.data.seo.content).seo}
+          lang={this.props.data.story.lang}
+          title={this.props.data.story.title}
+        />
         <Page blok={this.state.story.content} />
       </Layout>
     )
@@ -44,8 +50,22 @@ class PageTemplate extends React.Component {
 }
 
 export const query = graphql`
-  query Page($nodeId: String, $uuid: String, $footerId: String) {
+  query Page(
+    $nodeId: String
+    $uuid: String
+    $footerId: String
+    $seoId: String
+  ) {
     story: storyblokEntry(id: { eq: $nodeId }) {
+      name
+      content
+      full_slug
+      uuid
+      lang
+      title
+    }
+
+    footer: storyblokEntry(id: { eq: $footerId }) {
       name
       content
       full_slug
@@ -53,7 +73,7 @@ export const query = graphql`
       lang
     }
 
-    footer: storyblokEntry(id: { eq: $footerId }) {
+    seo: storyblokEntry(id: { eq: $seoId }) {
       name
       content
       full_slug

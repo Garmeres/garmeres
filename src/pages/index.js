@@ -3,6 +3,7 @@ import Page from "../components/Page"
 import Layout from "../layout/index"
 import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
+import SEO from "../components/seo"
 
 export default class IndexPage extends React.Component {
   state = {
@@ -32,6 +33,10 @@ export default class IndexPage extends React.Component {
   render() {
     return (
       <Layout location={this.props.location} lang="default">
+        <SEO
+          content={JSON.parse(this.props.data.seo.content).seo}
+          lang="default"
+        />
         <Page blok={this.state.story.content} />
       </Layout>
     )
@@ -54,6 +59,15 @@ export const query = graphql`
           content
         }
       }
+    }
+    seo: storyblokEntry(
+      lang: { eq: "default" }
+      field_component: { eq: "site_seo" }
+    ) {
+      name
+      content
+      full_slug
+      uuid
     }
   }
 `
