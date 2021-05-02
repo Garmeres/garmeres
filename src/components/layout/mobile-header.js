@@ -18,7 +18,6 @@ const MobileMenu = ({ menuData, lang, siblings, show, toggleMenu }) => {
       />
       <div
         id="mobile-menu"
-        role="menu"
         className={`${show != null ? (show ? "visible" : "hidden") : ""}`}
       >
         <div id="mobile-menu-content-container">
@@ -56,7 +55,7 @@ const MobileHeader = ({ content, menuData, lang, siblings, logoImage }) => {
   }
 
   return (
-    <div id="mobile-header-container">
+    <nav id="mobile-header-container" aria-labelledby="hamburger">
       <div id="mobile-header-content-container">
         <Logo image={logoImage} text={content.logo_text} />
 
@@ -72,7 +71,7 @@ const MobileHeader = ({ content, menuData, lang, siblings, logoImage }) => {
         show={showMenu}
         toggleMenu={() => setShowMenu(false)}
       />
-    </div>
+    </nav>
   )
 }
 export default MobileHeader

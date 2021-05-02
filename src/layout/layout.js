@@ -10,6 +10,11 @@ const Layout = ({ children, siblings, lang, location, footer, seo }) => {
   return (
     <div id="page-container">
       <Helmet
+        htmlAttributes={{
+          lang: lang === "default" ? "en" : lang,
+        }}
+      />
+      <Helmet
         script={[
           {
             src: `//app.storyblok.com/f/storyblok-latest.js?t=${StoryblokService.token}`,

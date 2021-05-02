@@ -6,7 +6,7 @@ import { Link } from "gatsby"
 
 const DesktopSidebar = ({ content, menuData, lang, siblings, logoImage }) => {
   return (
-    <div id="sidebar-container">
+    <nav id="sidebar-container">
       <Logo image={logoImage} text={content.logo_text} />
       <div id="sidebar-content-container">
         <div id="sidebar-menu-items-container">
@@ -29,7 +29,7 @@ const DesktopSidebar = ({ content, menuData, lang, siblings, logoImage }) => {
           <LanguageMenu siblings={siblings} lang={lang} />
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
 

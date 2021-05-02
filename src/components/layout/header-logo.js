@@ -5,7 +5,7 @@ import Img from "gatsby-image"
 const Logo = ({ image, text }) => {
   return (
     <div className="sidebar-logo-container">
-      <Link to="/">
+      <Link to="/" aria-label="home">
         <div id="sidebar-logo-image-container">
           <Img className="sidebar-logo-image" fluid={image} />
         </div>

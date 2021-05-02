@@ -9,6 +9,11 @@ const Layout = ({ children }) => {
   return (
     <div id="page-container">
       <Helmet
+        htmlAttributes={{
+          lang: "en",
+        }}
+      />
+      <Helmet
         script={[
           {
             src: `//app.storyblok.com/f/storyblok-latest.js?t=${StoryblokService.token}`,

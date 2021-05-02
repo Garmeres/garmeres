@@ -17,10 +17,10 @@ const query = graphql`
   }
 `
 
-const SocialIcon = ({ Icon, url }) => {
+const SocialIcon = ({ Icon, url, label = "Social" }) => {
   return (
     <IconContext.Provider value={{ className: "social-icon", size: 25 }}>
-      <a href={url != null ? url : "/"} target="blank">
+      <a href={url != null ? url : "/"} target="blank" aria-label={label}>
         <Icon />
       </a>
     </IconContext.Provider>
@@ -40,10 +40,12 @@ const Social = ({ lang }) => {
         return (
           <div id="social-container">
             <SocialIcon
+              label="Facebook"
               Icon={FaFacebookSquare}
               url={content != null ? content.facebook.url : null}
             />
             <SocialIcon
+              label="Instagram"
               Icon={FaInstagram}
               url={content != null ? content.instagram.url : null}
             />
