@@ -10,7 +10,7 @@ footer {
   height: auto;
   margin: auto;
   animation-name: index-fade-in;
-  animation-duration: 1.5s;
+  animation-duration: 1s;
 }
 
 #logo-container {
