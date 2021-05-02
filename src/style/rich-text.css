@@ -16,7 +16,7 @@
 .rich-text a,
 .rich-text span {
   font-size: 14pt;
-  font-family: "Newsreader";
+  font-family: "Newsreader", Arial, Helvetica, sans-serif;
 }
 
 .rich-text p {
@@ -54,7 +54,7 @@
   .rich-text a,
   .rich-text span {
     font-size: 1.1em;
-    font-family: "Newsreader";
+    font-family: "Newsreader", Arial, Helvetica, sans-serif;
   }
 
   .rich-text p {
