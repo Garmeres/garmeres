@@ -59,6 +59,7 @@ class PageTemplate extends React.Component {
           lang={this.props.data.story.lang}
           description={blocksToText(this.state.story.content.body, 120)}
           title={this.state.heading ? this.state.heading.title : null}
+          url={this.props.location.href}
         />
         <Page blok={this.state.story.content} heading={this.state.heading} />
       </Layout>
