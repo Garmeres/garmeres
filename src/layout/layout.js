@@ -6,12 +6,12 @@ import "../style/layout.css"
 import Header from "../components/layout/header"
 import Footer from "../components/Footer"
 
-const Layout = ({ children, siblings, lang, location, footer, seo }) => {
+const Layout = ({ children, siblings, lang, location, footer }) => {
   return (
     <div id="page-container">
       <Helmet
         htmlAttributes={{
-          lang: lang === "default" ? "en" : lang,
+          lang: lang === "default" ? "en" : lang === "sme" ? "no" : lang,
         }}
       />
       <Helmet
