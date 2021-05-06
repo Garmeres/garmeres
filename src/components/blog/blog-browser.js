@@ -23,8 +23,8 @@ const BlogPost = ({ story }) => {
   })
 
   return (
-    <div className="blog-browser-post-container">
-      <div className="blog-post-thumbnail">
+    <Link to={`/${story.full_slug}`} className="blog-browser-post-container">
+      <div className="blog-post-thumbnail" to="/">
         <Img
           fluid={thumbnail}
           objectFit="cover"
@@ -38,9 +38,9 @@ const BlogPost = ({ story }) => {
       <div className="blog-post-body">
         <h2>{story.title}</h2>
         <EllipsisText text={blocksToText(story.content.body)} />
-        <Link to={`/${story.full_slug}`}>Read more</Link>
+        <span className="read-more">Read more</span>
       </div>
-    </div>
+    </Link>
   )
 }
 

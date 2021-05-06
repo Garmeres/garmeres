@@ -2,7 +2,7 @@
   --post-thumbnail-width: 360px;
   --post-top-margin: 10px;
   --post-side-margin: 60px;
-  --post-bottom-margin: 70px;
+  --post-bottom-margin: 80px;
   --post-h2-font-size: 18pt;
   --post-font-size: 12pt;
   --post-a-font-size: 13pt;
@@ -37,6 +37,8 @@
   min-height: 100px;
   margin: var(--post-top-margin) var(--post-side-margin)
     var(--post-bottom-margin) var(--post-side-margin);
+  text-decoration: none;
+  color: black;
 }
 
 .blog-browser-post-empty {
@@ -73,9 +75,10 @@
   font-size: var(--post-font-size);
 }
 
-.blog-post-body a {
+.blog-post-body .read-more {
   color: black;
   font-size: var(--post-a-font-size);
+  text-decoration: underline;
 }
 
 .blog-browser-footer {
