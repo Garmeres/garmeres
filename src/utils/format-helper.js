@@ -5,9 +5,9 @@ const padNum = string => ("" + string).padStart(2, "0")
 
 const formatDateNow = () => {
   const date = new Date()
-  return `${padNum(date.getDate())}.${padNum(
+  return `${padNum(date.getDate().toString())}.${padNum(
     date.getMonth() + 1
-  )}.${date.getFullYear()}`
+  ).toString()}.${date.getFullYear().toString()}`
 }
 
 module.exports = { formatDateString, formatDateNow }
