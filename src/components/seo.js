@@ -2,7 +2,15 @@ import * as React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 
-function SEO({ description, lang, meta = [], title, content, image, url }) {
+function SEO({
+  description,
+  lang,
+  meta = [],
+  title,
+  content,
+  image = "https://img2.storyblok.com/180x161/smart/filters:quality(100)/f/108732/636x568/03f2924953/flagg-1.png",
+  url,
+}) {
   const metaDescription = description || content.description
   const defaultTitle = title ? content.title : null
   return (
