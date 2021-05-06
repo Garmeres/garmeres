@@ -47,6 +47,9 @@ class PageTemplate extends React.Component {
   }
 
   render() {
+    const title = this.props.data.story.title
+    const pageTitle =
+      title != null && title != "" ? title : this.props.data.story.name
     return (
       <Layout
         location={this.props.location}
@@ -58,7 +61,7 @@ class PageTemplate extends React.Component {
           content={JSON.parse(this.props.data.seo.content).seo}
           lang={this.props.data.story.lang}
           description={blocksToText(this.state.story.content.body, 120)}
-          title={this.state.heading ? this.state.heading.title : null}
+          title={pageTitle}
           url={this.props.location.href}
         />
         <Page blok={this.state.story.content} heading={this.state.heading} />
