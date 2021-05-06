@@ -8,7 +8,7 @@ function SEO({ description, lang, meta, title, content }) {
   return (
     <Helmet
       htmlAttributes={{
-        lang: lang === "default" ? "en" : lang,
+        lang: lang === "default" ? "en" : "no",
       }}
       title={title ? title : content.title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}

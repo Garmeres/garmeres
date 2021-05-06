@@ -9,27 +9,16 @@ import Footer from "../components/Footer"
 const Layout = ({ children, siblings, lang, location, footer }) => {
   return (
     <div id="page-container">
-      <Helmet
-        htmlAttributes={{
-          lang: lang === "default" ? "en" : lang === "sme" ? "no" : lang,
-        }}
-      />
-      <Helmet
-        script={[
-          {
-            src: `//app.storyblok.com/f/storyblok-latest.js?t=${StoryblokService.token}`,
-            type: "text/javascript",
-          },
-        ]}
-      />
-      <Helmet
-        script={[
-          {
-            innerHTML: `var StoryblokCacheVersion = '${StoryblokService.getCacheVersion()}';`,
-            type: "text/javascript",
-          },
-        ]}
-      />
+      <Helmet>
+        <script
+          src={`//app.storyblok.com/f/storyblok-latest.js?t=${StoryblokService.token}`}
+          type="text/javascript"
+        />
+        <script
+          innerHTML={`var StoryblokCacheVersion = '${StoryblokService.getCacheVersion()}';`}
+          type="text/javascript"
+        />
+      </Helmet>
       <Header
         siblings={siblings}
         lang={lang != null ? lang : "default"}
