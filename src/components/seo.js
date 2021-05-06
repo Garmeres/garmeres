@@ -9,20 +9,26 @@ function SEO({ description, lang, meta = [], title, content, image, url }) {
     <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}>
       <html lang={lang === "default" ? "en" : "no"} />
       <title>{title ? title : content.title}</title>
+      <meta name="title" content={title ? title : content.title} />
       <meta name="description" content={metaDescription} />
 
-      <meta name="og:url" content={url} />
-      <meta name="og:title" content={title ? title : content.title} />
-      <meta name="og:description" content={metaDescription} />
+      <meta property="og:url" content={url} />
+      <meta property="og:title" content={title ? title : content.title} />
+      <meta property="og:description" content={metaDescription} />
 
-      <meta name="og:type" content="website" />
-      <meta name="og:site_name" content="Garmeres" />
+      <meta property="og:type" content="website" />
+      <meta property="og:site_name" content="Garmeres" />
 
-      {image != null ? <meta name="og:image" content={image} /> : null}
-
+      {image != null ? <meta property="og:image" content={image} /> : null}
+      {image != null ? <meta property="twitter:image" content={image} /> : null}
       {image != null ? (
-        <meta name="twitter:image:alt" content="Preview of Garmeres.com" />
+        <meta property="twitter:image:alt" content="Preview of Garmeres.com" />
       ) : null}
+
+      <meta property="twitter:card" content="summary_large_image" />
+      <meta property="twitter:url" content={url} />
+      <meta property="twitter:title" content={title ? title : content.title} />
+      <meta property="twitter:description" content={metaDescription} />
 
       {meta.map(item => (
         <meta name={item.name} content={item.content} />
