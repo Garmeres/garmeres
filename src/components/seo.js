@@ -8,13 +8,13 @@ function SEO({
   meta = [],
   title,
   content,
-  image = "https://img2.storyblok.com/180x161/smart/filters:quality(100)/f/108732/636x568/03f2924953/flagg-1.png",
+  image = "https://img2.storyblok.com/f/108732/636x568/03f2924953/flagg-1.png",
   url,
 }) {
   const metaDescription = description || content.description
   const defaultTitle = title ? content.title : null
   return (
-    <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}>
+    <Helmet /*titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}*/>
       <html lang={lang === "default" ? "en" : "no"} />
       <title>{title != null && title !== "" ? title : content.title}</title>
       <meta
