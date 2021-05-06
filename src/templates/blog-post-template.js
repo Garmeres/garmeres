@@ -34,7 +34,8 @@ class PageTemplate extends React.Component {
         const title = this.props.data.story.title
         this.setState({
           heading: {
-            title: title ? title : this.props.story.name,
+            title:
+              title != null && title != "" ? title : this.props.data.story.name,
             published_at: story.first_published_at,
             tags: story.tag_list,
             author: story.content.author,
