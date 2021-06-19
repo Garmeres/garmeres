@@ -10,4 +10,11 @@ const formatDateNow = () => {
   ).toString()}.${date.getFullYear().toString()}`
 }
 
-module.exports = { formatDateString, formatDateNow }
+const removeEscape = str => {
+  const escChars = ["\n", `\"`]
+  var result = str
+  escChars.map(char => (result = result.replaceAll(char, "")))
+  return result
+}
+
+module.exports = { formatDateString, formatDateNow, removeEscape }

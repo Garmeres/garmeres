@@ -6,6 +6,7 @@ import StoryblokService from "../utils/storyblok-service"
 import "../style/blog-post.css"
 import SEO from "../components/seo"
 import { blocksToText } from "../utils/blocks-to-text"
+import { getSeoFromStory } from "../utils/seo-helper"
 
 class PageTemplate extends React.Component {
   state = {
@@ -23,6 +24,8 @@ class PageTemplate extends React.Component {
     } = await StoryblokService.get(
       `cdn/stories/${this.props.data.story.full_slug}`
     )
+    console.log(story)
+    console.log(getSeoFromStory(story))
     return story
   }
 
