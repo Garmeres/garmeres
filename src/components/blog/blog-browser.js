@@ -18,7 +18,13 @@ let Storyblok = new StoryblokClient({
 })
 
 const BlogPost = ({ story }) => {
-  const thumbnail = getFluidGatsbyImage(story.content.thumbnail.filename, {
+  const filename =
+    story.content.thumbnail != null && story.content.thumbnail.filename !== ""
+      ? story.content.thumbnail.filename
+      : "https://a.storyblok.com/f/108732/636x568/03f2924953/flagg-1.png"
+
+  console.log(filename)
+  const thumbnail = getFluidGatsbyImage(filename, {
     maxWidth: 360,
   })
 
