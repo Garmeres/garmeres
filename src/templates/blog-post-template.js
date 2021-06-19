@@ -5,7 +5,6 @@ import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
 import "../style/blog-post.css"
 import SEO from "../components/seo"
-import { blocksToText } from "../utils/blocks-to-text"
 import { getSeoFromStory } from "../utils/seo-helper"
 
 class PageTemplate extends React.Component {
@@ -15,6 +14,7 @@ class PageTemplate extends React.Component {
         ? JSON.parse(this.props.data.story.content)
         : {},
     },
+    storySeo: {},
   }
 
   async getInitialStory() {
@@ -24,12 +24,16 @@ class PageTemplate extends React.Component {
     } = await StoryblokService.get(
       `cdn/stories/${this.props.data.story.full_slug}`
     )
-    console.log(story)
-    console.log(getSeoFromStory(story))
     return story
   }
 
   async componentDidMount() {
+    this.setState({
+      storySeo: getSeoFromStory({
+        ...this.props.data.story,
+        content: JSON.parse(this.props.data.story.content),
+      }),
+    })
     let story = await this.getInitialStory()
     if (story.content) {
       this.setState({ story })
@@ -53,6 +57,8 @@ class PageTemplate extends React.Component {
     const title = this.props.data.story.title
     const pageTitle =
       title != null && title != "" ? title : this.props.data.story.name
+    //const storySeo = getSeoFromStory(this.state.story)
+
     return (
       <Layout
         location={this.props.location}
@@ -62,9 +68,11 @@ class PageTemplate extends React.Component {
       >
         <SEO
           content={JSON.parse(this.props.data.seo.content).seo}
-          lang={this.props.data.story.lang}
-          description={blocksToText(this.state.story.content.body, 120)}
-          title={pageTitle}
+          lang={this.state.storySeo.lang}
+          description={this.state.storySeo.description}
+          title={this.state.storySeo.title}
+          image={this.state.storySeo.image}
+          imageAlt={this.state.storySeo.imageAlt}
           url={this.props.location.href}
         />
         <Page blok={this.state.story.content} heading={this.state.heading} />
@@ -87,6 +95,10 @@ export const query = graphql`
       uuid
       lang
       title
+      translated_slugs {
+        path
+        name
+      }
     }
     footer: storyblokEntry(id: { eq: $footerId }) {
       name

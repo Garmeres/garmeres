@@ -3,7 +3,7 @@ const { removeEscape } = require("./format-helper")
 
 const title = {
   default: story => {
-    const translated = story.translated_slugs.find(
+    const translated = story.translated_slugs?.find(
       item => item.lang === story.lang
     )?.name
     return story.lang === "default" || translated == null
@@ -14,7 +14,7 @@ const title = {
 
 const description = {
   default: story => null,
-  "blog-post": story => removeEscape(blocksToText(story.content.body)),
+  "blog-post": story => removeEscape(blocksToText(story.content.body, 120)),
 }
 
 const image = {
@@ -25,6 +25,16 @@ const image = {
     story.content.thumbnail != null && story.content.thumbnail.filename !== ""
       ? story.content.thumbnail.filename
       : image.default(story),
+}
+
+const imageAlt = {
+  default: story => "Preview of Garmeres.com",
+  "blog-post": story =>
+    story.content.thumbnail != null &&
+    story.content.thumbnail.alt !== "" &&
+    story.content.thumbnail.alt != null
+      ? story.content.thumbnail.alt
+      : imageAlt.default(story),
 }
 
 const url = {
@@ -39,6 +49,7 @@ const resolvers = {
   title,
   description,
   image,
+  imageAlt,
   url,
   lang,
 }
@@ -55,7 +66,6 @@ const getSeoFromStory = story => {
         ? resolvers[field][component](story)
         : resolvers[field]["default"](story)
   })
-
   return result
 }
 

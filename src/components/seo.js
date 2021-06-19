@@ -8,7 +8,8 @@ function SEO({
   meta = [],
   title,
   content,
-  image = "https://img2.storyblok.com/f/108732/636x568/03f2924953/flagg-1.png",
+  image,
+  imageAlt,
   url,
 }) {
   const metaDescription = description || content.description
@@ -31,12 +32,19 @@ function SEO({
       <meta property="og:description" content={metaDescription} />
 
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="Garmeres" />
+      <meta property="og:site_name" content={content.title} />
 
       {image != null ? <meta property="og:image" content={image} /> : null}
       {image != null ? <meta property="twitter:image" content={image} /> : null}
       {image != null ? (
-        <meta property="twitter:image:alt" content="Preview of Garmeres.com" />
+        <meta
+          property="twitter:image:alt"
+          content={
+            imageAlt != null && imageAlt !== ""
+              ? imageAlt
+              : "Preview of Garmeres.com"
+          }
+        />
       ) : null}
 
       <meta property="twitter:card" content="summary_large_image" />
