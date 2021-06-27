@@ -28,12 +28,6 @@ class PageTemplate extends React.Component {
   }
 
   async componentDidMount() {
-    this.setState({
-      storySeo: getSeoFromStory({
-        ...this.props.data.story,
-        content: JSON.parse(this.props.data.story.content),
-      }),
-    })
     let story = await this.getInitialStory()
     if (story.content) {
       this.setState({ story })
@@ -54,10 +48,10 @@ class PageTemplate extends React.Component {
   }
 
   render() {
-    const title = this.props.data.story.title
-    const pageTitle =
-      title != null && title != "" ? title : this.props.data.story.name
-    //const storySeo = getSeoFromStory(this.state.story)
+    const storySeo = getSeoFromStory({
+      ...this.props.data.story,
+      content: JSON.parse(this.props.data.story.content),
+    })
 
     return (
       <Layout
@@ -68,11 +62,11 @@ class PageTemplate extends React.Component {
       >
         <SEO
           content={JSON.parse(this.props.data.seo.content).seo}
-          lang={this.state.storySeo.lang}
-          description={this.state.storySeo.description}
-          title={this.state.storySeo.title}
-          image={this.state.storySeo.image}
-          imageAlt={this.state.storySeo.imageAlt}
+          lang={storySeo.lang}
+          description={storySeo.description}
+          title={storySeo.title}
+          image={storySeo.image}
+          imageAlt={storySeo.imageAlt}
           url={this.props.location.href}
         />
         <Page blok={this.state.story.content} heading={this.state.heading} />
