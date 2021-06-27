@@ -14,19 +14,24 @@ const RichText = ({ blok }) => {
         {render(blok.text, {
           nodeResolvers: {
             [NODE_IMAGE]: (children, props) => {
+              const title = "Foto: Håkon Sandmo Karlsen"
+              console.log(props)
               return (
-                <Img
-                  className="rich-text-image"
-                  fixed={getFixedGatsbyImage(props.src)}
-                  alt={props.alt}
-                  imgStyle={{
-                    objectFit: "contain",
-                    zIndex: 0,
-                  }}
-                  style={{
-                    zIndex: 0,
-                  }}
-                />
+                <div className="rich-text-image-container">
+                  <Img
+                    className="rich-text-image"
+                    fixed={getFixedGatsbyImage(props.src)}
+                    alt={props.alt}
+                    imgStyle={{
+                      objectFit: "contain",
+                      zIndex: 0,
+                    }}
+                    style={{
+                      zIndex: 0,
+                    }}
+                  />
+                  <span className="rich-text-image-title">{title}</span>
+                </div>
               )
             },
           },
