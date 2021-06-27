@@ -5,10 +5,15 @@ import Img from "gatsby-image"
 import { getFluidGatsbyImage } from "gatsby-storyblok-image"
 import DynamicComponent from "../DynamicComponent"
 
+const Copyright = ({ text }) => {
+  return <span className="featured-copyright">{text}</span>
+}
+
 const Featured = ({ blok }) => {
   const image = getFluidGatsbyImage(blok.background_image.filename, {
     maxWidth: 900,
   })
+  console.log(blok.background_image)
   return (
     <SbEditable content={blok} key={blok._uid}>
       <div className="featured-container">
@@ -40,6 +45,9 @@ const Featured = ({ blok }) => {
           {blok.body.map(item => {
             return <DynamicComponent key={item._uid} blok={item} />
           })}
+          {blok.background_image.copyright != null ? (
+            <Copyright text={blok.background_image.copyright} />
+          ) : null}
         </div>
       </div>
     </SbEditable>
