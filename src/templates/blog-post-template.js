@@ -83,7 +83,7 @@ class PageTemplate extends React.Component {
       content: JSON.parse(this.props.data.story.content),
     })
 
-    const content = JSON.parse(this.props.data.story.content)
+    const content = this.state.story.content
 
     return (
       <Layout
@@ -102,7 +102,7 @@ class PageTemplate extends React.Component {
           url={this.props.location.href}
         />
         <BlogPostFeatured
-          _uid={this.props.data.story.uuid}
+          _uid={content._uid}
           image={content.thumbnail}
           backgroundColor={content.background_color?.color}
           color={content.text_color?.color}
