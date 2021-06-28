@@ -8,10 +8,18 @@ import SEO from "../components/seo"
 import { getSeoFromStory } from "../utils/seo-helper"
 import Featured from "../components/featured/Featured"
 
-const BlogPostFeatured = ({ image, key, color, backgroundColor, objectFit }) =>
+const BlogPostFeatured = ({
+  _uid,
+  image,
+  key,
+  color,
+  backgroundColor,
+  objectFit,
+}) =>
   image != null && image.filename != null && image.filename !== "" ? (
     <Featured
       blok={{
+        _uid,
         background_image: image,
         _uid: key,
         overlay_color: {
@@ -94,6 +102,7 @@ class PageTemplate extends React.Component {
           url={this.props.location.href}
         />
         <BlogPostFeatured
+          _uid={this.props.data.story.uuid}
           image={content.thumbnail}
           backgroundColor={content.background_color?.color}
           color={content.text_color?.color}
