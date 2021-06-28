@@ -14,8 +14,6 @@ const RichText = ({ blok }) => {
         {render(blok.text, {
           nodeResolvers: {
             [NODE_IMAGE]: (children, props) => {
-              const title = "Foto: Håkon Sandmo Karlsen"
-              console.log(props)
               return (
                 <div className="rich-text-image-container">
                   <Img
@@ -30,7 +28,7 @@ const RichText = ({ blok }) => {
                       zIndex: 0,
                     }}
                   />
-                  <span className="rich-text-image-title">{title}</span>
+                  <span className="rich-text-image-title">{props.title}</span>
                 </div>
               )
             },

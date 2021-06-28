@@ -13,7 +13,6 @@ const Featured = ({ blok }) => {
   const image = getFluidGatsbyImage(blok.background_image.filename, {
     maxWidth: 900,
   })
-  console.log(blok.background_image)
   return (
     <SbEditable content={blok} key={blok._uid}>
       <div className="featured-container">

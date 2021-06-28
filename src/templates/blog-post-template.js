@@ -6,6 +6,25 @@ import StoryblokService from "../utils/storyblok-service"
 import "../style/blog-post.css"
 import SEO from "../components/seo"
 import { getSeoFromStory } from "../utils/seo-helper"
+import Featured from "../components/featured/Featured"
+
+const BlogPostFeatured = ({ image, key }) =>
+  image != null && image.filename != null && image.filename !== "" ? (
+    <Featured
+      blok={{
+        background_image: image,
+        _uid: key,
+        overlay_color: {
+          color: "#000",
+        },
+        overlay_opacity: 0,
+        text_color: {
+          color: "#FFF",
+        },
+        body: [],
+      }}
+    />
+  ) : null
 
 class PageTemplate extends React.Component {
   state = {
@@ -52,6 +71,8 @@ class PageTemplate extends React.Component {
       ...this.props.data.story,
       content: JSON.parse(this.props.data.story.content),
     })
+    
+    const thumbnail = JSON.parse(this.props.data.story.content).thumbnail
 
     return (
       <Layout
@@ -69,6 +90,7 @@ class PageTemplate extends React.Component {
           imageAlt={storySeo.imageAlt}
           url={this.props.location.href}
         />
+        <BlogPostFeatured image={thumbnail} />
         <Page blok={this.state.story.content} heading={this.state.heading} />
       </Layout>
     )
