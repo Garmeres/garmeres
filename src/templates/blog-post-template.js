@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 import { getSeoFromStory } from "../utils/seo-helper"
 import Featured from "../components/featured/Featured"
 
-const BlogPostFeatured = ({ image, key }) =>
+const BlogPostFeatured = ({ image, key, color, backgroundColor, objectFit }) =>
   image != null && image.filename != null && image.filename !== "" ? (
     <Featured
       blok={{
@@ -23,6 +23,9 @@ const BlogPostFeatured = ({ image, key }) =>
         },
         body: [],
       }}
+      color={color}
+      backgroundColor={backgroundColor}
+      objectFit={objectFit}
     />
   ) : null
 
@@ -71,8 +74,8 @@ class PageTemplate extends React.Component {
       ...this.props.data.story,
       content: JSON.parse(this.props.data.story.content),
     })
-    
-    const thumbnail = JSON.parse(this.props.data.story.content).thumbnail
+
+    const content = JSON.parse(this.props.data.story.content)
 
     return (
       <Layout
@@ -90,7 +93,12 @@ class PageTemplate extends React.Component {
           imageAlt={storySeo.imageAlt}
           url={this.props.location.href}
         />
-        <BlogPostFeatured image={thumbnail} />
+        <BlogPostFeatured
+          image={content.thumbnail}
+          backgroundColor={content.background_color?.color}
+          color={content.text_color?.color}
+          objectFit={content.object_fit}
+        />
         <Page blok={this.state.story.content} heading={this.state.heading} />
       </Layout>
     )
