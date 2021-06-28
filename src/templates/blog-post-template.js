@@ -11,24 +11,28 @@ import Featured from "../components/featured/Featured"
 const BlogPostFeatured = ({
   _uid,
   image,
-  key,
   color,
   backgroundColor,
   objectFit,
+  overlayColor,
+  overlayOpacity,
 }) =>
   image != null && image.filename != null && image.filename !== "" ? (
     <Featured
       blok={{
         _uid,
         background_image: image,
-        _uid: key,
         overlay_color: {
-          color: "#000",
+          color: overlayColor,
         },
-        overlay_opacity: 0,
+        overlay_opacity: overlayOpacity,
         text_color: {
-          color: "#FFF",
+          color: color,
         },
+        background_color: {
+          color: backgroundColor,
+        },
+        object_fit: objectFit,
         body: [],
       }}
       color={color}
@@ -36,6 +40,16 @@ const BlogPostFeatured = ({
       objectFit={objectFit}
     />
   ) : null
+
+BlogPostFeatured.defaultProps = {
+  _uid: null,
+  image: null,
+  color: "#FFFFFF",
+  backgroundColor: "#000000",
+  overlayColor: "#000000",
+  overlayOpacity: 0,
+  objectFit: "100%",
+}
 
 class PageTemplate extends React.Component {
   state = {
@@ -102,7 +116,7 @@ class PageTemplate extends React.Component {
           url={this.props.location.href}
         />
         <BlogPostFeatured
-          _uid={content._uid}
+          _uid={this.state.story._uid}
           image={content.thumbnail}
           backgroundColor={content.background_color?.color}
           color={content.text_color?.color}

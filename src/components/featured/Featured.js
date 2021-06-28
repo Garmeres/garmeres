@@ -9,10 +9,20 @@ const Copyright = ({ text }) => {
   return <span className="featured-copyright">{text}</span>
 }
 
-const Featured = ({ blok, backgroundColor, color, objectFit }) => {
+const Featured = ({ blok }) => {
   const image = getFluidGatsbyImage(blok.background_image.filename, {
     maxWidth: 900,
   })
+
+  if (blok.objectFit == null) blok.objectFit = "100%"
+  if (blok.background_color?.color == null)
+    blok.background_color = {
+      color: "#000000",
+    }
+  if (blok.text_color?.color == null)
+    blok.text_color = {
+      color: "#FFFFFF",
+    }
 
   return (
     <SbEditable content={blok} key={blok._uid}>
@@ -26,9 +36,9 @@ const Featured = ({ blok, backgroundColor, color, objectFit }) => {
           imgStyle={{
             width: "100%",
             height: "100%",
-            objectFit,
-            backgroundColor,
-            color,
+            objectFit: blok.object_fit,
+            backgroundColor: blok.background_color.color,
+            color: blok.text_color.color,
           }}
         />
         <div
@@ -54,12 +64,6 @@ const Featured = ({ blok, backgroundColor, color, objectFit }) => {
       </div>
     </SbEditable>
   )
-}
-
-Featured.defaultProps = {
-  color: "#FFFFFF",
-  backgroundColor: "#000000",
-  objectFit: "100%",
 }
 
 export default Featured
