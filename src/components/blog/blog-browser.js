@@ -78,11 +78,20 @@ export default ({ blok }) => {
   useEffect(() => {
     async function getStories() {
       const stories = await Storyblok.get("cdn/stories", {
-        starts_with: blok.source_path.story.full_slug,
+        starts_with:
+          blok.source_path.story != null
+            ? blok.source_path.story.full_slug
+            : undefined,
         is_startpage: 0,
         page: page,
         per_page: blok.page_capacity,
+        filter_query: {
+          component: {
+            in: "blog-post,blog_post",
+          },
+        },
       })
+      console.log(stories)
       setMaxPage(Math.ceil(stories.headers.total / stories.headers["per-page"]))
       setPosts(
         posts.concat(
