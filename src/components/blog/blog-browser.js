@@ -75,13 +75,15 @@ export default ({ blok }) => {
   const [maxPage, setMaxPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
 
+  const fallback_url = `${blok.source_path.cached_url.split("/").join("")}/*`
+
   useEffect(() => {
     async function getStories() {
       const stories = await Storyblok.get("cdn/stories", {
         starts_with:
           blok.source_path.story != null
             ? blok.source_path.story.full_slug
-            : undefined,
+            : fallback_url,
         is_startpage: 0,
         page: page,
         per_page: blok.page_capacity,
@@ -91,7 +93,7 @@ export default ({ blok }) => {
           },
         },
       })
-      console.log(stories)
+
       setMaxPage(Math.ceil(stories.headers.total / stories.headers["per-page"]))
       setPosts(
         posts.concat(
