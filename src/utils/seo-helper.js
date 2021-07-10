@@ -10,6 +10,9 @@ const title = {
       ? story.name
       : translated
   },
+  "blog-post": story => {
+    return story.title != null ? story.title : title["default"](story)
+  },
 }
 
 const description = {
