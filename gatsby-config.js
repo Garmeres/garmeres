@@ -3,6 +3,7 @@ module.exports = {
     title: `Garmeres - Official website`,
     description: `Official website for Garmeres.`,
     author: `@leevi978`,
+    siteUrl: 'https://www.garmeres.com'
   },
   flags: {
     THE_FLAG: false,
@@ -48,5 +49,11 @@ module.exports = {
       },
     },
     "gatsby-plugin-offline",
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    }
   ],
 }
