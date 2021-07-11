@@ -1,12 +1,14 @@
 :root {
   --post-thumbnail-width: 360px;
   --post-top-margin: 10px;
-  --post-side-margin: 60px;
-  --post-bottom-margin: 80px;
+  --post-side-margin: 80px;
+  --post-bottom-margin: 110px;
   --post-h2-font-size: 18pt;
   --post-font-size: 12pt;
   --post-a-font-size: 13pt;
   --post-thumbnail-margin: 20px;
+  --browser-margin-top: 80px;
+  --browser-padding-side: 30px;
 }
 
 .blog-browser {
@@ -14,6 +16,7 @@
   flex-direction: column;
   flex-grow: 1;
   justify-content: space-between;
+  margin-top: var(--browser-margin-top);
 }
 
 .blog-browser-header {
@@ -27,7 +30,7 @@
   flex-direction: row;
   flex-flow: row wrap;
   justify-content: space-around;
-  padding: 0 30px;
+  padding: 0 var(--browser-padding-side);
 }
 
 .blog-browser-post-container {
@@ -118,21 +121,26 @@
     --post-h2-font-size: 18pt;
     --post-font-size: 12pt;
     --post-a-font-size: 13pt;
+    --post-bottom-margin: 100px;
+    --browser-margin-top: 60px;
+    --browser-padding-side: 10px;
   }
 }
 
 @media only screen and (max-width: 1280px) {
   :root {
     --post-thumbnail-width: 280px;
-    --post-side-margin: 30px;
+    --post-side-margin: 25px;
   }
 }
 
 @media only screen and (max-width: 1125px),
   only screen and (max-height: 540px) {
   :root {
-    --post-thumbnail-width: 320px;
-    --post-side-margin: 5px;
+    --post-thumbnail-width: 280px;
+    --post-side-margin: 40px;
+    --post-bottom-margin: 120px;
+    --browser-margin-top: 80px;
   }
 
   .blog-browser-post-container {
@@ -145,12 +153,14 @@
     width: auto;
     height: 100%;
     margin: auto;
+    margin-left: 40px;
   }
 }
 
 @media only screen and (max-width: 1080px) {
   :root {
-    --post-side-margin: 30px;
+    --post-thumbnail-width: 300px;
+    --post-bottom-margin: 80px;
   }
 
   .blog-browser-post-container {
@@ -171,8 +181,10 @@
 @media only screen and (max-width: 840px) {
   :root {
     --post-thumbnail-width: 280px;
-    --post-side-margin: 20px;
-    --post-bottom-margin: 80px;
+    --post-side-margin: 0px;
+    --post-bottom-margin: 120px;
+    --browser-padding-side: 30px;
+    --browser-margin-top: 80px;
   }
 
   .blog-browser-post-container {
@@ -181,11 +193,21 @@
     justify-content: space-between;
     width: 100%;
   }
+
+  .blog-post-thumbnail {
+    margin: auto 0;
+  }
+
   .blog-post-body {
     width: auto;
     height: 100%;
     margin: auto;
-    padding: 0 40px;
+    margin-left: 40px;
+  }
+
+  .blog-post-body h1 {
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .blog-post-body p {
@@ -198,6 +220,7 @@
     --post-thumbnail-width: 240px;
     --post-side-margin: 0px;
     --post-bottom-margin: 100px;
+    --browser-margin-top: 40px;
   }
 }
 
@@ -208,6 +231,7 @@
   :root {
     --post-thumbnail-width: 360px;
     --post-side-margin: 30px;
+    --browser-margin-top: 20px;
   }
 
   .blog-browser-post-container {
@@ -222,6 +246,15 @@
     padding: 0 0px;
     height: initial;
     margin: initial;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  :root {
+    --post-thumbnail-width: 70vw;
+    --post-side-margin: 0px;
+    --browser-padding-side: 0px;
   }
 }
 
@@ -229,5 +262,11 @@
   :root {
     --post-thumbnail-width: 80vw;
     --post-side-margin: 0px;
+    --browser-padding-side: 0px;
+    --browser-margin-top: 10px;
+  }
+
+  .blog-post-body {
+    margin-top: 8px;
   }
 }
