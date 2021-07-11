@@ -106,6 +106,7 @@ export default ({ blok }) => {
         is_startpage: 0,
         page: page,
         per_page: blok.page_capacity,
+        sort_by: "first_published_at:desc",
         filter_query: {
           component: {
             in: "blog-post,blog_post",
