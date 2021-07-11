@@ -69,6 +69,25 @@ const MoreButton = ({ isLoading, onClick }) => {
   )
 }
 
+async function getLang() {
+  const stories = await Storyblok.get("cdn/stories", {
+    starts_with: "home",
+  })
+
+  return stories.data.stories[0].translated_slugs.map(item => item.lang)
+}
+
+async function getFallbackUrl(blok) {
+  const cachedUrl = blok.source_path.cached_url
+  if (cachedUrl.length > 0) {
+    const languages = await getLang()
+    const blokLang = cachedUrl
+      .split("/")
+      .filter(i => i !== "/" && i.length > 0 && languages.includes(i))[0]
+    return blokLang != null ? `${blokLang}/*` : blokLang
+  } else return undefined
+}
+
 export default ({ blok }) => {
   const [posts, setPosts] = useState([])
   const [page, setPage] = useState(1)
@@ -83,7 +102,7 @@ export default ({ blok }) => {
         starts_with:
           blok.source_path.story != null
             ? blok.source_path.story.full_slug
-            : fallback_url,
+            : await getFallbackUrl(blok),
         is_startpage: 0,
         page: page,
         per_page: blok.page_capacity,
