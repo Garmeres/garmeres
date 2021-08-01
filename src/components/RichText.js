@@ -14,18 +14,26 @@ const RichText = ({ blok }) => {
         {render(blok.text, {
           nodeResolvers: {
             [NODE_IMAGE]: (children, props) => {
+              const fixed = getFixedGatsbyImage(props.src, {
+                width: 640,
+              })
+              console.log(fixed)
               return (
                 <div className="rich-text-image-container">
                   <Img
                     className="rich-text-image"
-                    fixed={getFixedGatsbyImage(props.src)}
+                    fixed={fixed}
                     alt={props.alt}
                     imgStyle={{
                       objectFit: "contain",
                       zIndex: 0,
+                      width: "100%",
+                      maxWidth: fixed.width,
+                      margin: "auto",
                     }}
                     style={{
                       zIndex: 0,
+                      width: "100%",
                     }}
                   />
                   <span className="rich-text-image-title">{props.title}</span>

@@ -8,7 +8,9 @@
 }
 
 .rich-text .gatsby-image-wrapper {
-  max-width: 100%;
+}
+
+.rich-text .gatsby-image-wrapper img {
 }
 
 .rich-text u,
@@ -46,7 +48,14 @@
 .rich-text-image-container {
   display: flex;
   flex-direction: column;
-  margin: 40px 0;
+  justify-content: center;
+  margin: 80px auto;
+  width: 100% !important;
+}
+
+.rich-text-image-container span {
+  width: auto !important;
+  text-align: center;
 }
 
 .rich-text-image-title {
@@ -110,6 +119,10 @@
   .rich-text h6 {
     margin-top: 2em;
   }
+
+  .rich-text-image-container {
+    margin: 40px auto;
+  }
 }
 
 @media only screen and (max-width: 480px) {
@@ -153,5 +166,9 @@
   .rich-text h6 {
     font-size: 0.65em;
     margin-bottom: 0;
+  }
+
+  .rich-text-image-container {
+    margin: 0px auto;
   }
 }

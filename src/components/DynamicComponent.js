@@ -1,5 +1,4 @@
 import React from "react"
-import { formatDateNow } from "../utils/format-helper"
 import Placeholder from "./Placeholder"
 import LogoImage from "./image-components/LogoImage"
 import LanguageSelector from "./index/LanguageSelector"
