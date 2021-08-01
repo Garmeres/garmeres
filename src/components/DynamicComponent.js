@@ -10,17 +10,10 @@ import FeaturedText from "./featured/FeaturedText"
 import CallToAction from "./featured/CallToAction"
 import BlogBrowser from "./blog/blog-browser"
 import Footer from "./Footer"
+import PublishedAt from "./PublishedAt"
 
 const CustomText = ({ blok }) => {
   return <span>{blok.text}</span>
-}
-
-const PublishedAt = ({ blok }) => {
-  return (
-    <span>
-      {blok.label} {formatDateNow()}
-    </span>
-  )
 }
 
 const Components = {
