@@ -7,6 +7,8 @@
   justify-content: space-between;
   width: 100%;
   margin-top: 60px;
+  width: auto;
+  margin: 30px 10% 0px 10%;
 }
 
 .grid-item {
@@ -15,20 +17,14 @@
   box-sizing: border-box;
 }
 
-@media only screen and (max-width: 1540px) {
+@media only screen and (max-width: 720px) {
   .grid-container {
-    margin-top: 50px;
-  }
-}
-
-@media only screen and (max-width: 1080px) {
-  .grid-container {
-    margin-top: 40px;
+    margin: 30px 5%;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .grid-container {
-    margin-top: 60px;
+    margin: 30px 15px;
   }
 }
