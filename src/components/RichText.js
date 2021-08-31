@@ -4,6 +4,7 @@ import { render, NODE_IMAGE } from "storyblok-rich-text-react-renderer"
 import "../style/rich-text.css"
 import Img from "gatsby-image"
 import { getFixedGatsbyImage } from "gatsby-storyblok-image"
+import DynamicComponent from "./DynamicComponent"
 
 const RichText = ({ blok }) => {
   // document is the rich text object you receive from Storyblok,
@@ -39,6 +40,16 @@ const RichText = ({ blok }) => {
                 </div>
               )
             },
+          },
+          defaultBlokResolver: (name, props) => {
+            return (
+              <DynamicComponent
+                blok={{
+                  component: name,
+                  ...props,
+                }}
+              />
+            )
           },
         })}
       </div>

@@ -1,0 +1,104 @@
+:root {
+  --shadow-opacity: 0.4;
+  --shadow-height: 30px;
+  --item-width: 80%;
+  --aspect-ratio: calc(110 / 80);
+  --ppp: calc(var(--item-width) * var(--aspect-ratio));
+  --person-box-margin: 80px;
+}
+
+.grid-item.person {
+  margin-bottom: var(--person-box-margin);
+}
+
+.person-container {
+  display: flex;
+  flex-direction: column;
+  width: var(--item-width);
+  padding-top: var(--ppp);
+  position: relative;
+  margin: auto;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.person-image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 480px;
+  max-height: 100%;
+  min-height: 100%;
+  width: 100%;
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+.person-info-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, var(--shadow-opacity));
+  color: white;
+  height: 20%;
+  padding: 0px 10px 10px 10px;
+  box-shadow: 0 0 var(--shadow-height) var(--shadow-height)
+    rgba(0, 0, 0, var(--shadow-opacity));
+}
+
+.person-info-container * {
+  margin: 5px 0 !important;
+}
+
+.person-name {
+  font-size: 16pt;
+  padding: 0 !important;
+}
+
+.person-title {
+  font-family: "Spartan" !important;
+  font-size: 12pt !important;
+}
+
+.person-image-copyright {
+  font-family: "Spartan" !important;
+  font-size: 12pt !important;
+}
+
+@media only screen and (max-width: 1540px) {
+  :root {
+    --grid-container-width: 50%;
+    --item-width: 80%;
+    --person-box-margin: 100px;
+  }
+
+  .grid-item.person {
+    width: var(--grid-container-width);
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  :root {
+    --grid-container-width: 50%;
+    --item-width: 90%;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  :root {
+    --grid-container-width: 50%;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  :root {
+    --grid-container-width: 100%;
+  }
+}

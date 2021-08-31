@@ -10,6 +10,8 @@ import CallToAction from "./featured/CallToAction"
 import BlogBrowser from "./blog/blog-browser"
 import Footer from "./Footer"
 import PublishedAt from "./PublishedAt"
+import Grid from "./Grid"
+import Person from "./Person"
 
 const CustomText = ({ blok }) => {
   return <span>{blok.text}</span>
@@ -27,6 +29,8 @@ const Components = {
   footer: Footer,
   custom_text: CustomText,
   last_published: PublishedAt,
+  grid: Grid,
+  person: Person,
 }
 
 const Component = ({ blok }) => {
