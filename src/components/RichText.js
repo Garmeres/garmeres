@@ -17,7 +17,6 @@ const RichText = ({ blok }) => {
               const fixed = getFixedGatsbyImage(props.src, {
                 width: 640,
               })
-              console.log(fixed)
               return (
                 <div className="rich-text-image-container">
                   <Img
