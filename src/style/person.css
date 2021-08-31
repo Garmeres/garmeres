@@ -100,5 +100,13 @@
 @media only screen and (max-width: 720px) {
   :root {
     --grid-container-width: 100%;
+    --item-width: 70%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  :root {
+    --item-width: 90%;
+    --person-box-margin: 80px;
   }
 }
