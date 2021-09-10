@@ -16,7 +16,7 @@ function SEO({
   const defaultTitle = title ? content.title : null
   return (
     <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}>
-      <html lang={lang === "default" ? "en" : "no"} />
+      <html lang={lang === "default" ? "en" : lang} />
       <title>{title != null && title !== "" ? title : content.title}</title>
       <meta
         name="title"

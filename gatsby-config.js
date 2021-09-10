@@ -3,7 +3,7 @@ module.exports = {
     title: `Garmeres - Official website`,
     description: `Official website for Garmeres.`,
     author: `@leevi978`,
-    siteUrl: 'https://www.garmeres.com'
+    siteUrl: "https://www.garmeres.com",
   },
   flags: {
     THE_FLAG: false,
@@ -21,6 +21,17 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+
+    {
+      resolve: "gatsby-source-storyblok",
+      options: {
+        accessToken: "cqYfQpnpPi9yS2MBQADiQQtt",
+        homeSlug: "home",
+        version: "published", //process.env.NODE_ENV === "production" ? "published" : "draft",
+        resolveLinks: "url",
+        includeLinks: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -33,23 +44,12 @@ module.exports = {
         icon: `src/images/ikon.png`, // This path is relative to the root of the site.
       },
     },
-
-    {
-      resolve: "gatsby-source-storyblok",
-      options: {
-        accessToken: "cqYfQpnpPi9yS2MBQADiQQtt",
-        homeSlug: "home",
-        version: "published", //process.env.NODE_ENV === "production" ? "published" : "draft",
-        resolveLinks: "url",
-        includeLinks: true,
-      },
-    },
     "gatsby-plugin-offline",
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        policy: [{ userAgent: '*', allow: '/' }]
-      }
-    }
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
   ],
 }
