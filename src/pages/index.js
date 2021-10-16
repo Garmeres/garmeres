@@ -3,7 +3,7 @@ import Page from "../components/Page"
 import Layout from "../layout/index"
 import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 
 export default class IndexPage extends React.Component {
   state = {
@@ -24,16 +24,17 @@ export default class IndexPage extends React.Component {
     return story
   }
 
-  async componentDidMount() {
-    let story = await this.getInitialStory()
-    if (story.content) this.setState({ story })
+  componentDidMount() {
+    this.getInitialStory().then(story => {
+      if (story.content) this.setState({ story })
+    })
     setTimeout(() => StoryblokService.initEditor(this), 200)
   }
 
   render() {
     return (
       <Layout location={this.props.location} lang="default">
-        <SEO
+        <Seo
           content={JSON.parse(this.props.data.seo.content).seo}
           lang="default"
         />
