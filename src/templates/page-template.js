@@ -52,6 +52,7 @@ class PageTemplate extends React.Component {
             JSON.parse(this.props.data.story.content).body,
             120
           )}
+          altVersions={this.props.data.story.alternate_versions}
         />
         <Page blok={this.state.story.content} />
       </Layout>
@@ -74,6 +75,11 @@ export const query = graphql`
       uuid
       lang
       title
+      alternate_versions {
+        lang
+        language_code
+        full_slug
+      }
     }
 
     footer: storyblokEntry(id: { eq: $footerId }) {

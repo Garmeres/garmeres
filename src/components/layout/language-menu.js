@@ -4,7 +4,7 @@ import "../../style/language-menu.css"
 
 const query = graphql`
   query LanguageMenu {
-    languageLabels: allStoryblokEntry(
+    languageSettings: allStoryblokEntry(
       filter: { slug: { eq: "language-settings" } }
     ) {
       edges {
@@ -24,7 +24,7 @@ const LanguageMenu = ({ siblings, lang }) => {
       render={data => {
         return (
           <div id="sidebar-language-menu">
-            {data.languageLabels.edges.map(({ node }) => {
+            {data.languageSettings.edges.map(({ node }) => {
               const nodeLang = node.lang
               const full_slug =
                 siblings != null

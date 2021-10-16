@@ -138,8 +138,15 @@ exports.createSchemaCustomization = ({ actions }) => {
       menuItems: [MenuItem]!
     }
 
+    type AlternateVersion {
+      lang: String
+      full_slug: String
+      language_code: String
+    }
+
     type StoryblokEntry implements Node {
       title: String
+      alternate_versions: [AlternateVersion]
     }
   `
   createTypes(typeDefs)
@@ -172,6 +179,52 @@ exports.onCreateNode = ({
     }
     createNode(Object.assign({}, nodeData, nodeMeta))
   }
+}
+
+const resolveLanguageCode = (lang, context) => {
+  return context.nodeModel
+    .runQuery({
+      query: {
+        filter: {
+          lang: {
+            eq: lang,
+          },
+          slug: {
+            eq: "language-settings",
+          },
+        },
+      },
+      type: "StoryblokEntry",
+      firstOnly: true,
+    })
+    .then(node => {
+      return JSON.parse(node.content).language_code
+    })
+}
+
+const resolveAlternateVersions = (source, context) => {
+  return context.nodeModel
+    .runQuery({
+      query: {
+        filter: {
+          uuid: {
+            eq: source.uuid,
+          },
+        },
+      },
+      type: "StoryblokEntry",
+      firstOnly: false,
+    })
+    .then(nodes => {
+      return nodes.map(node => {
+        const langcode = resolveLanguageCode(node.lang, context)
+        return {
+          lang: node.lang,
+          full_slug: node.full_slug,
+          language_code: langcode != null ? langcode : node.lang,
+        }
+      })
+    })
 }
 
 const resolveMenuItems = (source, context) => {
@@ -231,6 +284,12 @@ exports.createResolvers = ({ createResolvers }) => {
           }
 
           return result
+        },
+      },
+
+      alternate_versions: {
+        resolve: (source, args, context, info) => {
+          return resolveAlternateVersions(source, context)
         },
       },
     },

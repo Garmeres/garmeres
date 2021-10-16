@@ -113,6 +113,7 @@ class PageTemplate extends React.Component {
           image={storySeo.image}
           imageAlt={storySeo.imageAlt}
           url={this.props.location.href}
+          altVersions={this.props.data.story.alternate_versions}
         />
         <BlogPostFeatured
           _uid={this.state.story._uid}
@@ -157,6 +158,11 @@ export const query = graphql`
       translated_slugs {
         path
         name
+      }
+      alternate_versions {
+        lang
+        language_code
+        full_slug
       }
     }
     footer: storyblokEntry(id: { eq: $footerId }) {

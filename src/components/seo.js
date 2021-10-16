@@ -11,12 +11,24 @@ function SEO({
   image,
   imageAlt,
   url,
+  altVersions = [],
 }) {
   const metaDescription = description || content.description
   const defaultTitle = title ? content.title : null
+  const altLang = altVersions.find(v => v.lang === lang)
   return (
     <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}>
-      <html lang={lang === "default" ? "en" : lang} />
+      <html lang={altLang != null ? altLang.language_code : lang} />
+      {altVersions.map(v => {
+        return (
+          <link
+            key={v.language_code}
+            rel="alternate"
+            href={`http://garmeres.com/${v.full_slug}`}
+            hrefLang={v.language_code}
+          />
+        )
+      })}
       <title>{title != null && title !== "" ? title : content.title}</title>
       <meta
         name="title"
