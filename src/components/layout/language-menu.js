@@ -5,7 +5,7 @@ import "../../style/language-menu.css"
 const query = graphql`
   query LanguageMenu {
     languageLabels: allStoryblokEntry(
-      filter: { slug: { eq: "language-label" } }
+      filter: { slug: { eq: "language-settings" } }
     ) {
       edges {
         node {
