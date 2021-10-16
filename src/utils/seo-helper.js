@@ -63,7 +63,7 @@ const getSeoFromStory = story => {
   const component = story.content.component
   const fields = Object.entries(resolvers).map(item => item[0])
 
-  fields.map(field => {
+  fields.forEach(field => {
     result[field] =
       resolvers[field][component] != null
         ? resolvers[field][component](story)

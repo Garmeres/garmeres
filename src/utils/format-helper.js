@@ -11,9 +11,9 @@ const formatDateNow = () => {
 }
 
 const removeEscape = str => {
-  const escChars = ["\n", `\"`]
+  const escChars = ["\n", `"`]
   var result = str != null ? str : ""
-  escChars.map(c => {
+  escChars.forEach(c => {
     result = result.split(c).join("")
   })
   return result

@@ -88,13 +88,11 @@ async function getFallbackUrl(blok) {
   } else return undefined
 }
 
-export default ({ blok }) => {
+const BlogBrowser = ({ blok }) => {
   const [posts, setPosts] = useState([])
   const [page, setPage] = useState(1)
   const [maxPage, setMaxPage] = useState(1)
   const [isLoading, setIsLoading] = useState(true)
-
-  const fallback_url = `${blok.source_path.cached_url.split("/").join("")}/*`
 
   useEffect(() => {
     async function getStories() {
@@ -162,3 +160,5 @@ export default ({ blok }) => {
     </SbEditable>
   )
 }
+
+export default BlogBrowser

@@ -13,7 +13,7 @@ const resolvers = {
   },
   list_item: item => {
     var result = ""
-    item.content.map(i => {
+    item.content.forEach(i => {
       result += resolve(i)
     })
     return result
