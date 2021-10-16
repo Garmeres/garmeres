@@ -1,6 +1,6 @@
 import React from "react"
 
-export default ({ text, maxCharCount = 180 }) => {
+const EllipsisText = ({ text, maxCharCount = 180 }) => {
   const max = text.length >= maxCharCount ? maxCharCount : text.length
   return (
     <p className="ellipsis-text">
@@ -9,3 +9,5 @@ export default ({ text, maxCharCount = 180 }) => {
     </p>
   )
 }
+
+export default EllipsisText

@@ -6,7 +6,7 @@ import { getFixedGatsbyImage } from "gatsby-storyblok-image"
 
 const Person = ({ blok }) => {
   const fixed =
-    blok.image.filename != ""
+    blok.image.filename !== ""
       ? getFixedGatsbyImage(blok.image.filename, { width: 480 })
       : null
   return (
@@ -34,7 +34,7 @@ const Person = ({ blok }) => {
         </div>
         <div className="person-info-container">
           <h2 className="person-name">{blok.name}</h2>
-          {blok.title != null && blok.title != "" ? (
+          {blok.title !== null && blok.title !== "" ? (
             <span className="person-title">{blok.title}</span>
           ) : null}
           <span className="person-image-copyright">{blok.image.copyright}</span>
