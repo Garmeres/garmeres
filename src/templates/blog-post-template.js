@@ -4,7 +4,7 @@ import Layout from "../layout/layout"
 import { graphql } from "gatsby"
 import StoryblokService from "../utils/storyblok-service"
 import "../style/blog-post.css"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import { getSeoFromStory } from "../utils/seo-helper"
 import Featured from "../components/featured/Featured"
 
@@ -66,7 +66,10 @@ class PageTemplate extends React.Component {
     let {
       data: { story },
     } = await StoryblokService.get(
-      `cdn/stories/${this.props.data.story.full_slug}`
+      `cdn/stories/${this.props.data.story.default_full_slug}`,
+      {
+        language: this.props.data.story.lang,
+      }
     )
     return story
   }
@@ -80,7 +83,9 @@ class PageTemplate extends React.Component {
         this.setState({
           heading: {
             title:
-              title != null && title != "" ? title : this.props.data.story.name,
+              title !== null && title !== ""
+                ? title
+                : this.props.data.story.name,
             published_at: story.first_published_at,
             tags: story.tag_list,
             author: story.content.author,
@@ -106,7 +111,7 @@ class PageTemplate extends React.Component {
         lang={this.props.data.story.lang}
         footer={this.props.data.footer}
       >
-        <SEO
+        <Seo
           content={JSON.parse(this.props.data.seo.content).seo}
           lang={storySeo.lang}
           description={storySeo.description}
@@ -139,6 +144,7 @@ export const query = graphql`
       name
       content
       full_slug
+      default_full_slug
       uuid
       lang
       title
