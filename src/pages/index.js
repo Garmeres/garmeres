@@ -52,15 +52,6 @@ export const query = graphql`
       full_slug
       uuid
     }
-    settings: allStoryblokEntry(filter: { name: { eq: "Language label" } }) {
-      edges {
-        node {
-          id
-          lang
-          content
-        }
-      }
-    }
     seo: storyblokEntry(
       lang: { eq: "default" }
       field_component: { eq: "site_seo" }

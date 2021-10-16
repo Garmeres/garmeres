@@ -18,7 +18,15 @@ function SEO({
   const altLang = altVersions.find(v => v.lang === lang)
   return (
     <Helmet titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}>
-      <html lang={altLang != null ? altLang.language_code : lang} />
+      <html
+        lang={
+          altLang != null
+            ? altLang.language_code
+            : lang === "default"
+            ? "en"
+            : lang
+        }
+      />
       {altVersions.map(v => {
         return (
           <link
