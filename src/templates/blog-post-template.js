@@ -54,6 +54,7 @@ BlogPostFeatured.defaultProps = {
 class PageTemplate extends React.Component {
   state = {
     story: {
+      ...this.props.data.story,
       content: this.props.data.story
         ? JSON.parse(this.props.data.story.content)
         : {},
@@ -74,25 +75,18 @@ class PageTemplate extends React.Component {
     return story
   }
 
-  async componentDidMount() {
-    let story = await this.getInitialStory()
-    if (story.content) {
-      this.setState({ story })
-      if (story.content.component === "blog-post") {
-        const title = this.props.data.story.title
+  componentDidMount() {
+    this.getInitialStory().then(story => {
+      if (story.content) {
         this.setState({
-          heading: {
-            title:
-              title !== null && title !== ""
-                ? title
-                : this.props.data.story.name,
-            published_at: story.first_published_at,
-            tags: story.tag_list,
-            author: story.content.author,
+          story: {
+            ...this.props.data.story,
+            ...story,
           },
         })
       }
-    }
+    })
+
     setTimeout(() => StoryblokService.initEditor(this), 200)
   }
 
@@ -127,7 +121,17 @@ class PageTemplate extends React.Component {
           color={content.text_color?.color}
           objectFit={content.object_fit}
         />
-        <Page blok={this.state.story.content} heading={this.state.heading} />
+        <Page
+          blok={this.state.story.content}
+          heading={{
+            title:
+              this.state.story.title != null
+                ? this.state.story.title
+                : this.state.story.name,
+            author: this.state.story.content.author,
+            published_at: this.state.story.first_published_at,
+          }}
+        />
       </Layout>
     )
   }
@@ -148,6 +152,8 @@ export const query = graphql`
       uuid
       lang
       title
+      field_author_string
+      first_published_at
       translated_slugs {
         path
         name
