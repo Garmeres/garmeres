@@ -28,14 +28,16 @@ function SEO({
         }
       />
       {altVersions.map(v => {
-        return (
+        const vUrl = `https://garmeres.com/${v.full_slug}`
+        return [
           <link
             key={v.language_code}
             rel="alternate"
-            href={`http://garmeres.com/${v.full_slug}`}
+            href={vUrl}
             hrefLang={v.language_code}
-          />
-        )
+          />,
+          v.lang === lang ? <link rel="canonical" href={vUrl} /> : null,
+        ]
       })}
       <title>{title != null && title !== "" ? title : content.title}</title>
       <meta
