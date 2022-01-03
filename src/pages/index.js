@@ -33,7 +33,9 @@ export default class IndexPage extends React.Component {
 
   render() {
     return (
-      <Layout location={this.props.location} lang="default">
+      <Layout 
+      location={this.props.location} lang="default" 
+      canonical_link={this.props.data.site.siteMetadata.siteUrl}>
         <Seo
           content={JSON.parse(this.props.data.seo.content).seo}
           lang="default"
@@ -60,6 +62,11 @@ export const query = graphql`
       content
       full_slug
       uuid
+    }
+    site {
+      siteMetadata {
+        siteUrl
+      }
     }
   }
 `

@@ -12,7 +12,9 @@ const Layout = ({ children }) => {
         htmlAttributes={{
           lang: "en",
         }}
-      />
+      >
+        <link rel="canonical" href={"https://www.garmeres.com"} />
+      </Helmet>
       <Helmet
         script={[
           {

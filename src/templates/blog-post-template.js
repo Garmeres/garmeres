@@ -163,6 +163,7 @@ export const query = graphql`
         lang
         language_code
         full_slug
+        canonical_link
       }
     }
     footer: storyblokEntry(id: { eq: $footerId }) {

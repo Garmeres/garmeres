@@ -142,6 +142,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       lang: String
       full_slug: String
       language_code: String
+      canonical_link: String
     }
 
     type StoryblokEntry implements Node {
@@ -202,6 +203,16 @@ const resolveLanguageCode = (lang, context) => {
     })
 }
 
+const resolveCanonicalLink = (source, context) => {
+  return context.nodeModel.runQuery({
+    query: {},
+    type: "Site",
+    firstOnly: true
+  }).then(siteNode => {
+    return `${siteNode.siteMetadata.siteUrl}/${source.full_slug}`
+  })
+}
+
 const resolveAlternateVersions = (source, context) => {
   return context.nodeModel
     .runQuery({
@@ -221,6 +232,7 @@ const resolveAlternateVersions = (source, context) => {
         return {
           lang: node.lang,
           full_slug: node.full_slug,
+          canonical_link: resolveCanonicalLink(node, context),
           language_code: langcode != null ? langcode : node.lang,
         }
       })
